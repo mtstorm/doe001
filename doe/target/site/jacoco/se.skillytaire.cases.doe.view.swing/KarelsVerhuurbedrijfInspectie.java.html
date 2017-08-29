@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="nl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>KarelsVerhuurbedrijfInspectie.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">DOE</a> &gt; <a href="index.source.html" class="el_package">se.skillytaire.cases.doe.view.swing</a> &gt; <span class="el_source">KarelsVerhuurbedrijfInspectie.java</span></div><h1>KarelsVerhuurbedrijfInspectie.java</h1><pre class="source lang-java linenums">package se.skillytaire.cases.doe.view.swing;
+
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.ArrayList;
+
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.border.BevelBorder;
+
+import se.skillytaire.cases.doe.common.VoertuigType;
+import se.skillytaire.cases.doe.common.TochtType;
+import se.skillytaire.cases.doe.service.BootInformatie;
+import se.skillytaire.cases.doe.service.KlantInformatie;
+import se.skillytaire.cases.doe.service.StartTochtInformatie;
+import se.skillytaire.cases.doe.service.TochtEinde;
+import se.skillytaire.cases.doe.service.VerhuurderService;
+import se.skillytaire.cases.doe.service.impl.VerhuurderServiceImpl;
+
+public class KarelsVerhuurbedrijfInspectie extends JFrame {
+	private static final long serialVersionUID = 1L;
+	private final VerhuurderService karel;
+<span class="nc" id="L26">	private javax.swing.JPanel panelMain = null;</span>
+<span class="nc" id="L27">	private javax.swing.JPanel panelKnoppen = null;</span>
+<span class="nc" id="L28">	private javax.swing.JList&lt;String&gt; listUitvoer = null;</span>
+<span class="nc" id="L29">	private javax.swing.JButton buttonStartMeerTocht = null;</span>
+<span class="nc" id="L30">	private javax.swing.JButton buttonStartRiviertocht = null;</span>
+<span class="nc" id="L31">	private javax.swing.JButton buttonEindeTocht = null;</span>
+<span class="nc" id="L32">	private javax.swing.JTextField textBootnummerEindeTocht = null;</span>
+<span class="nc" id="L33">	private javax.swing.JButton buttonUitvoerenInspectie = null;</span>
+<span class="nc" id="L34">	private javax.swing.JTextField textBootnummerUitvoerenInspectie = null;</span>
+<span class="nc" id="L35">	private javax.swing.JButton buttonAantalBeeindigdeTochten = null;</span>
+<span class="nc" id="L36">	private javax.swing.JButton buttonGemiddeldeDuur = null;</span>
+<span class="nc" id="L37">	private javax.swing.JButton buttonBootInformatie = null;</span>
+<span class="nc" id="L38">	private javax.swing.JTextField textBootnummerInformatie = null;</span>
+<span class="nc" id="L39">	private javax.swing.JButton buttonRegistrerenKlant = null;</span>
+<span class="nc" id="L40">	private javax.swing.JButton buttonReserveren = null;</span>
+<span class="nc" id="L41">	private javax.swing.JButton buttonKlantInformatie = null;</span>
+<span class="nc" id="L42">	private JTextField textKlantnummerInformatie = null;</span>
+<span class="nc" id="L43">	private javax.swing.JButton buttonBotenOverzicht = null;</span>
+<span class="nc" id="L44">	private javax.swing.JButton buttonAfsluiten = null;</span>
+<span class="nc" id="L45">	private javax.swing.DefaultListModel&lt;String&gt; ivjOverzichtModel = null;</span>
+<span class="nc" id="L46">	private javax.swing.JScrollPane scrollPaneUitvoer = null;</span>
+
+	public static void main(final String[] args) {
+<span class="nc" id="L49">		new KarelsVerhuurbedrijfInspectie().setVisible(true);</span>
+<span class="nc" id="L50">	}</span>
+
+	public KarelsVerhuurbedrijfInspectie() {
+<span class="nc" id="L53">		super();</span>
+<span class="nc" id="L54">		initialize();</span>
+<span class="nc" id="L55">		karel = VerhuurderServiceImpl.getInstance();</span>
+<span class="nc" id="L56">	}</span>
+
+	private void initialize() {
+<span class="nc" id="L59">		setContentPane(getPanelMain());</span>
+		// this.setSize(561, 381);
+<span class="nc" id="L61">		this.setSize(561, 486);</span>
+<span class="nc" id="L62">		setTitle(&quot;Dana's Outdoor Experience&quot;);</span>
+<span class="nc" id="L63">		setResizable(false);</span>
+<span class="nc" id="L64">		setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);</span>
+
+<span class="nc" id="L66">	}</span>
+
+	private javax.swing.JPanel getPanelMain() {
+<span class="nc bnc" id="L69" title="All 2 branches missed.">		if (panelMain == null) {</span>
+<span class="nc" id="L70">			panelMain = new javax.swing.JPanel();</span>
+<span class="nc" id="L71">			panelMain.setLayout(new javax.swing.BoxLayout(panelMain, javax.swing.BoxLayout.X_AXIS));</span>
+<span class="nc" id="L72">			panelMain.add(getPanelKnoppen(), null);</span>
+<span class="nc" id="L73">			panelMain.add(getScrollPaneUitvoer(), null);</span>
+<span class="nc" id="L74">			panelMain.setBorder(new javax.swing.border.SoftBevelBorder(BevelBorder.LOWERED));</span>
+		}
+<span class="nc" id="L76">		return panelMain;</span>
+	}
+
+	private javax.swing.JPanel getPanelKnoppen() {
+<span class="nc bnc" id="L80" title="All 2 branches missed.">		if (panelKnoppen == null) {</span>
+<span class="nc" id="L81">			panelKnoppen = new javax.swing.JPanel();</span>
+<span class="nc" id="L82">			panelKnoppen.setLayout(null);</span>
+<span class="nc" id="L83">			panelKnoppen.add(getButtonStartMeerTocht(), null);</span>
+<span class="nc" id="L84">			panelKnoppen.add(getButtonStartRiviertocht(), null);</span>
+<span class="nc" id="L85">			panelKnoppen.add(getButtonEindeTocht(), null);</span>
+<span class="nc" id="L86">			panelKnoppen.add(getTextBootnummerEindeTocht(), null);</span>
+<span class="nc" id="L87">			panelKnoppen.add(getButtonUitvoerenInspectie(), null);</span>
+<span class="nc" id="L88">			panelKnoppen.add(getTextBootnummerUitvoerenInspectie(), null);</span>
+<span class="nc" id="L89">			panelKnoppen.add(getButtonAantalBeeindigdeTochten(), null);</span>
+<span class="nc" id="L90">			panelKnoppen.add(getButtonGemiddeldeDuur(), null);</span>
+<span class="nc" id="L91">			panelKnoppen.add(getButtonBootnummerInformatie(), null);</span>
+<span class="nc" id="L92">			panelKnoppen.add(getTextBootnummerInformatie(), null);</span>
+<span class="nc" id="L93">			panelKnoppen.add(getButtonRegistrerenKlant(), null);</span>
+<span class="nc" id="L94">			panelKnoppen.add(getButtonReserveren(), null);</span>
+<span class="nc" id="L95">			panelKnoppen.add(getButtonKlantInformatie(), null);</span>
+<span class="nc" id="L96">			panelKnoppen.add(getTextKlantnummerInformatie(), null);</span>
+<span class="nc" id="L97">			panelKnoppen.add(getButtonBotenOverzicht(), null);</span>
+<span class="nc" id="L98">			panelKnoppen.add(getButtonAfsluiten(), null);</span>
+<span class="nc" id="L99">			panelKnoppen.setPreferredSize(new java.awt.Dimension(180, 100));</span>
+		}
+<span class="nc" id="L101">		return panelKnoppen;</span>
+	}
+
+	private javax.swing.JList&lt;String&gt; getListUitvoer() {
+<span class="nc bnc" id="L105" title="All 2 branches missed.">		if (listUitvoer == null) {</span>
+<span class="nc" id="L106">			listUitvoer = new javax.swing.JList&lt;&gt;();</span>
+<span class="nc" id="L107">			listUitvoer.setModel(getIvjOverzichtModel());</span>
+<span class="nc" id="L108">			listUitvoer.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);</span>
+		}
+<span class="nc" id="L110">		return listUitvoer;</span>
+	}
+
+	private javax.swing.JButton getButtonStartMeerTocht() {
+<span class="nc bnc" id="L114" title="All 2 branches missed.">		if (buttonStartMeerTocht == null) {</span>
+<span class="nc" id="L115">			buttonStartMeerTocht = new javax.swing.JButton();</span>
+<span class="nc" id="L116">			buttonStartMeerTocht.setSize(185, 27);</span>
+<span class="nc" id="L117">			buttonStartMeerTocht.setText(&quot;Start Meertocht&quot;);</span>
+<span class="nc" id="L118">			buttonStartMeerTocht.setLocation(10, 10);</span>
+<span class="nc" id="L119">			buttonStartMeerTocht.addActionListener(e -&gt; {</span>
+<span class="nc" id="L120">				int nr = 0;</span>
+<span class="nc" id="L121">				final String[] args = new String[0];</span>
+<span class="nc" id="L122">				final StartTochtDialog startDialog = new StartTochtDialog(&quot;Start tocht&quot;, args);</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">				if (startDialog.isActionOK()) {</span>
+<span class="nc" id="L124">					final String typeBoot = startDialog.getTypeBoot();</span>
+<span class="nc" id="L125">					final Duration duur = startDialog.getDuur();</span>
+<span class="nc" id="L126">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(&quot;Type Boot &quot; + typeBoot);</span>
+<span class="nc" id="L127">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(&quot;Duur &quot; + duur);</span>
+
+<span class="nc bnc" id="L129" title="All 10 branches missed.">					switch (typeBoot) {</span>
+					case &quot;Elektrisch&quot;: {
+<span class="nc" id="L131">						final StartTochtInformatie info = new StartTochtInformatie(VoertuigType.ELEKTRISCHE_BOOT, TochtType.MEER,</span>
+								duur);
+<span class="nc" id="L133">						nr = karel.startTocht(info);</span>
+<span class="nc" id="L134">						KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel()</span>
+<span class="nc" id="L135">								.addElement(&quot;Meertocht gestart met Elektrische boot &quot; + nr);</span>
+<span class="nc" id="L136">						break;</span>
+					}
+					case &quot;RoeiBoot&quot;: {
+<span class="nc" id="L139">						final StartTochtInformatie info = new StartTochtInformatie(VoertuigType.ROEI_BOOT, TochtType.MEER, duur);</span>
+<span class="nc" id="L140">						nr = karel.startTocht(info);</span>
+<span class="nc" id="L141">						KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel()</span>
+<span class="nc" id="L142">								.addElement(&quot;Meertocht gestart met Roeiboot &quot; + nr);</span>
+<span class="nc" id="L143">						break;</span>
+					}
+					default:
+<span class="nc" id="L146">						KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(&quot;Error boottype&quot;);</span>
+						break;
+					}
+<span class="nc" id="L149">					listUitvoer.ensureIndexIsVisible(</span>
+<span class="nc" id="L150">							KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().getSize() - 1);</span>
+<span class="nc" id="L151">					updateOverzichtVrijeBoten();</span>
+				}
+<span class="nc" id="L153">			});</span>
+		}
+<span class="nc" id="L155">		return buttonStartMeerTocht;</span>
+	}
+
+	private javax.swing.JButton getButtonStartRiviertocht() {
+<span class="nc bnc" id="L159" title="All 2 branches missed.">		if (buttonStartRiviertocht == null) {</span>
+<span class="nc" id="L160">			buttonStartRiviertocht = new javax.swing.JButton();</span>
+<span class="nc" id="L161">			buttonStartRiviertocht.setSize(185, 27);</span>
+<span class="nc" id="L162">			buttonStartRiviertocht.setLocation(10, 45);</span>
+<span class="nc" id="L163">			buttonStartRiviertocht.setText(&quot;Start Riviertocht&quot;);</span>
+<span class="nc" id="L164">			buttonStartRiviertocht.addActionListener(e -&gt; {</span>
+				try {
+<span class="nc" id="L166">					final Duration duur = Duration.ofHours(2);</span>
+<span class="nc" id="L167">					final StartTochtInformatie info = new StartTochtInformatie(VoertuigType.ROEI_BOOT, TochtType.RIVIER, duur);</span>
+<span class="nc" id="L168">					final int nr = karel.startTocht(info);</span>
+
+<span class="nc" id="L170">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel()</span>
+<span class="nc" id="L171">							.addElement(&quot;Riviertocht gestart met boot &quot; + nr);</span>
+<span class="nc" id="L172">					listUitvoer.ensureIndexIsVisible(</span>
+<span class="nc" id="L173">							KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().getSize() - 1);</span>
+<span class="nc" id="L174">					updateOverzichtVrijeBoten();</span>
+<span class="nc" id="L175">				} catch (final IllegalStateException parm) {</span>
+<span class="nc" id="L176">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(parm.getMessage());</span>
+<span class="nc" id="L177">				}</span>
+<span class="nc" id="L178">			});</span>
+		}
+<span class="nc" id="L180">		return buttonStartRiviertocht;</span>
+	}
+
+	private javax.swing.JButton getButtonEindeTocht() {
+<span class="nc bnc" id="L184" title="All 2 branches missed.">		if (buttonEindeTocht == null) {</span>
+<span class="nc" id="L185">			buttonEindeTocht = new javax.swing.JButton();</span>
+<span class="nc" id="L186">			buttonEindeTocht.setSize(145, 27);</span>
+<span class="nc" id="L187">			buttonEindeTocht.setText(&quot;Beeindig Tocht&quot;);</span>
+<span class="nc" id="L188">			buttonEindeTocht.setLocation(10, 80);</span>
+<span class="nc" id="L189">			buttonEindeTocht.addActionListener(e -&gt; {</span>
+				try {
+<span class="nc" id="L191">					final int nr = Integer</span>
+<span class="nc" id="L192">							.parseInt(KarelsVerhuurbedrijfInspectie.this.getTextBootnummerEindeTocht().getText());</span>
+<span class="nc" id="L193">					final TochtEinde einde = karel.beeindigTocht(nr);</span>
+<span class="nc" id="L194">					final Duration deDuur = einde.getDuur();</span>
+<span class="nc" id="L195">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(&quot;Boot &quot; + nr</span>
+<span class="nc" id="L196">							+ &quot; is terug. Duur: &quot; + KarelsVerhuurbedrijfInspectie.durationToString(deDuur));</span>
+<span class="nc" id="L197">					listUitvoer.ensureIndexIsVisible(</span>
+<span class="nc" id="L198">							KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().getSize() - 1);</span>
+<span class="nc bnc" id="L199" title="All 2 branches missed.">					final String bootInspectieMsg = &quot;Boot &quot; + nr + &quot; heeft &quot; + (einde.isInspectieNodig() ? &quot;&quot; : &quot;g&quot;)</span>
+							+ &quot;een inspectie nodig&quot;;
+<span class="nc" id="L201">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(bootInspectieMsg);</span>
+<span class="nc" id="L202">					listUitvoer.ensureIndexIsVisible(</span>
+<span class="nc" id="L203">							KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().getSize() - 1);</span>
+<span class="nc" id="L204">					updateOverzichtVrijeBoten();</span>
+<span class="nc" id="L205">				} catch (final NumberFormatException parm1) {</span>
+<span class="nc" id="L206">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel()</span>
+<span class="nc" id="L207">							.addElement(&quot;Bootnummer niet correct gevuld&quot;);</span>
+<span class="nc" id="L208">				} catch (final IllegalStateException parm2) {</span>
+<span class="nc" id="L209">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(parm2.getMessage());</span>
+<span class="nc" id="L210">				}</span>
+
+<span class="nc" id="L212">			});</span>
+		}
+<span class="nc" id="L214">		return buttonEindeTocht;</span>
+	}
+
+	private javax.swing.JTextField getTextBootnummerEindeTocht() {
+<span class="nc bnc" id="L218" title="All 2 branches missed.">		if (textBootnummerEindeTocht == null) {</span>
+<span class="nc" id="L219">			textBootnummerEindeTocht = new javax.swing.JTextField();</span>
+<span class="nc" id="L220">			textBootnummerEindeTocht.setSize(35, 25);</span>
+<span class="nc" id="L221">			textBootnummerEindeTocht.setLocation(160, 81);</span>
+		}
+<span class="nc" id="L223">		return textBootnummerEindeTocht;</span>
+	}
+
+	private javax.swing.JButton getButtonUitvoerenInspectie() {
+<span class="nc bnc" id="L227" title="All 2 branches missed.">		if (buttonUitvoerenInspectie == null) {</span>
+<span class="nc" id="L228">			buttonUitvoerenInspectie = new javax.swing.JButton();</span>
+<span class="nc" id="L229">			buttonUitvoerenInspectie.setSize(145, 27);</span>
+<span class="nc" id="L230">			buttonUitvoerenInspectie.setText(&quot;Uitvoeren inspectie&quot;);</span>
+<span class="nc" id="L231">			buttonUitvoerenInspectie.setLocation(10, 115);</span>
+<span class="nc" id="L232">			buttonUitvoerenInspectie.addActionListener(e -&gt; {</span>
+				try {
+<span class="nc" id="L234">					final int nr = Integer.parseInt(</span>
+<span class="nc" id="L235">							KarelsVerhuurbedrijfInspectie.this.getTextBootnummerUitvoerenInspectie().getText());</span>
+<span class="nc" id="L236">					karel.uitvoerenInspectie(nr);</span>
+<span class="nc" id="L237">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel()</span>
+<span class="nc" id="L238">							.addElement(&quot;Boot &quot; + nr + &quot; is geinspecteerd&quot;);</span>
+<span class="nc" id="L239">					listUitvoer.ensureIndexIsVisible(</span>
+<span class="nc" id="L240">							KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().getSize() - 1);</span>
+<span class="nc" id="L241">					updateOverzichtVrijeBoten();</span>
+<span class="nc" id="L242">				} catch (final NumberFormatException parm1) {</span>
+<span class="nc" id="L243">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel()</span>
+<span class="nc" id="L244">							.addElement(&quot;Bootnummer niet correct gevuld&quot;);</span>
+<span class="nc" id="L245">				} catch (final IllegalStateException parm2) {</span>
+<span class="nc" id="L246">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(parm2.getMessage());</span>
+<span class="nc" id="L247">				}</span>
+
+<span class="nc" id="L249">			});</span>
+		}
+<span class="nc" id="L251">		return buttonUitvoerenInspectie;</span>
+	}
+
+	private javax.swing.JTextField getTextBootnummerUitvoerenInspectie() {
+<span class="nc bnc" id="L255" title="All 2 branches missed.">		if (textBootnummerUitvoerenInspectie == null) {</span>
+<span class="nc" id="L256">			textBootnummerUitvoerenInspectie = new javax.swing.JTextField();</span>
+<span class="nc" id="L257">			textBootnummerUitvoerenInspectie.setSize(35, 25);</span>
+<span class="nc" id="L258">			textBootnummerUitvoerenInspectie.setLocation(160, 116);</span>
+		}
+<span class="nc" id="L260">		return textBootnummerUitvoerenInspectie;</span>
+	}
+
+	private javax.swing.JButton getButtonAantalBeeindigdeTochten() {
+<span class="nc bnc" id="L264" title="All 2 branches missed.">		if (buttonAantalBeeindigdeTochten == null) {</span>
+<span class="nc" id="L265">			buttonAantalBeeindigdeTochten = new javax.swing.JButton();</span>
+<span class="nc" id="L266">			buttonAantalBeeindigdeTochten.setSize(185, 27);</span>
+<span class="nc" id="L267">			buttonAantalBeeindigdeTochten.setText(&quot;Aantal Beeindigde Tochten&quot;);</span>
+<span class="nc" id="L268">			buttonAantalBeeindigdeTochten.setLocation(10, 150);</span>
+<span class="nc" id="L269">			buttonAantalBeeindigdeTochten.addActionListener(e -&gt; {</span>
+<span class="nc" id="L270">				final int aantal = karel.geefAantalBeeindigdeTochten();</span>
+<span class="nc" id="L271">				KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel()</span>
+<span class="nc" id="L272">						.addElement(&quot;Aantal beeindigde tochten: &quot; + aantal);</span>
+<span class="nc" id="L273">				listUitvoer</span>
+<span class="nc" id="L274">						.ensureIndexIsVisible(KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().getSize() - 1);</span>
+<span class="nc" id="L275">			});</span>
+		}
+<span class="nc" id="L277">		return buttonAantalBeeindigdeTochten;</span>
+	}
+
+	private javax.swing.JButton getButtonGemiddeldeDuur() {
+<span class="nc bnc" id="L281" title="All 2 branches missed.">		if (buttonGemiddeldeDuur == null) {</span>
+<span class="nc" id="L282">			buttonGemiddeldeDuur = new javax.swing.JButton();</span>
+<span class="nc" id="L283">			buttonGemiddeldeDuur.setSize(185, 27);</span>
+<span class="nc" id="L284">			buttonGemiddeldeDuur.setText(&quot;Gemiddelde Duur&quot;);</span>
+<span class="nc" id="L285">			buttonGemiddeldeDuur.setLocation(10, 185);</span>
+<span class="nc" id="L286">			buttonGemiddeldeDuur.addActionListener(e -&gt; {</span>
+<span class="nc" id="L287">				final Duration gemiddelde = karel.geefGemiddeldeDuur();</span>
+<span class="nc" id="L288">				KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel()</span>
+<span class="nc" id="L289">						.addElement(&quot;Gemiddelde duur: &quot; + KarelsVerhuurbedrijfInspectie.durationToString(gemiddelde));</span>
+<span class="nc" id="L290">				listUitvoer</span>
+<span class="nc" id="L291">						.ensureIndexIsVisible(KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().getSize() - 1);</span>
+<span class="nc" id="L292">			});</span>
+		}
+<span class="nc" id="L294">		return buttonGemiddeldeDuur;</span>
+	}
+
+	private javax.swing.JButton getButtonBootnummerInformatie() {
+<span class="nc bnc" id="L298" title="All 2 branches missed.">		if (buttonBootInformatie == null) {</span>
+<span class="nc" id="L299">			buttonBootInformatie = new javax.swing.JButton();</span>
+<span class="nc" id="L300">			buttonBootInformatie.setSize(145, 27);</span>
+<span class="nc" id="L301">			buttonBootInformatie.setText(&quot;Opvragen bootinfo&quot;);</span>
+<span class="nc" id="L302">			buttonBootInformatie.setLocation(10, 220);</span>
+<span class="nc" id="L303">			buttonBootInformatie.addActionListener(e -&gt; {</span>
+				try {
+<span class="nc" id="L305">					final int bootnr = Integer</span>
+<span class="nc" id="L306">							.parseInt(KarelsVerhuurbedrijfInspectie.this.getTextBootnummerInformatie().getText());</span>
+<span class="nc" id="L307">					final String title = &quot;Bootinformatie &quot; + bootnr;</span>
+<span class="nc" id="L308">					final BootInformatie bootTO = karel.getBootInformatie(bootnr);</span>
+<span class="nc" id="L309">					final String[] columnNames = { &quot;Boot type&quot;, &quot;Aantal personen&quot;, &quot;Verwachte eindtijd&quot; };</span>
+
+<span class="nc" id="L311">					final Object[][] columnData = {</span>
+<span class="nc" id="L312">							{ bootTO.getType(), bootTO.getAantalPersonen(), bootTO.getVerwachteEindtijd() },</span>
+							// {&quot;John&quot;, &quot;Doe&quot;,&quot;Rowing&quot;, new Integer(3), new Boolean(true)},
+							// {&quot;Sue&quot;, &quot;Black&quot;,&quot;Knitting&quot;, new Integer(2), new Boolean(false)},
+							// {&quot;Jane&quot;, &quot;White&quot;,&quot;Speed reading&quot;, new Integer(20), new Boolean(true)},
+							// {&quot;Joe&quot;, &quot;Brown&quot;,&quot;Pool&quot;, new Integer(10), new Boolean(false)}
+					};
+
+<span class="nc" id="L319">					JScrollPaneDemo.createAndShowGUI(title, columnNames, columnData);</span>
+
+<span class="nc" id="L321">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel()</span>
+<span class="nc" id="L322">							.addElement(&quot;Boot &quot; + bootnr + &quot; Informatie opgehaald&quot;);</span>
+<span class="nc" id="L323">					listUitvoer.ensureIndexIsVisible(</span>
+<span class="nc" id="L324">							KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().getSize() - 1);</span>
+<span class="nc" id="L325">				} catch (final NumberFormatException parm1) {</span>
+<span class="nc" id="L326">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel()</span>
+<span class="nc" id="L327">							.addElement(&quot;Bootnummer niet correct gevuld&quot;);</span>
+<span class="nc" id="L328">				} catch (final IllegalStateException parm2) {</span>
+<span class="nc" id="L329">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(parm2.getMessage());</span>
+<span class="nc" id="L330">				}</span>
+<span class="nc" id="L331">			});</span>
+		}
+<span class="nc" id="L333">		return buttonBootInformatie;</span>
+	}
+
+	private javax.swing.JTextField getTextBootnummerInformatie() {
+<span class="nc bnc" id="L337" title="All 2 branches missed.">		if (textBootnummerInformatie == null) {</span>
+<span class="nc" id="L338">			textBootnummerInformatie = new javax.swing.JTextField();</span>
+<span class="nc" id="L339">			textBootnummerInformatie.setSize(35, 25);</span>
+<span class="nc" id="L340">			textBootnummerInformatie.setLocation(160, 220);</span>
+		}
+<span class="nc" id="L342">		return textBootnummerInformatie;</span>
+	}
+
+	private javax.swing.JButton getButtonRegistrerenKlant() {
+<span class="nc bnc" id="L346" title="All 2 branches missed.">		if (buttonRegistrerenKlant == null) {</span>
+<span class="nc" id="L347">			buttonRegistrerenKlant = new javax.swing.JButton();</span>
+<span class="nc" id="L348">			buttonRegistrerenKlant.setSize(185, 27);</span>
+<span class="nc" id="L349">			buttonRegistrerenKlant.setText(&quot;Registreren klant&quot;);</span>
+<span class="nc" id="L350">			buttonRegistrerenKlant.setLocation(10, 255);</span>
+<span class="nc" id="L351">			buttonRegistrerenKlant.addActionListener(e -&gt; {</span>
+<span class="nc" id="L352">				final String[] args = new String[0];</span>
+<span class="nc" id="L353">				final JTextFieldDemo klant = new JTextFieldDemo(&quot;Registreren klant&quot;, args);</span>
+<span class="nc bnc" id="L354" title="All 2 branches missed.">				if (klant.isActionOK()) {</span>
+					int klantNummer;
+<span class="nc" id="L356">					final String naam = klant.getName();</span>
+<span class="nc" id="L357">					final String adres = klant.getAddress();</span>
+<span class="nc" id="L358">					final String woonplaats = klant.getCity();</span>
+<span class="nc" id="L359">					final String telefoonnummer = klant.getPhone();</span>
+<span class="nc" id="L360">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(&quot;Klant naam &quot; + naam);</span>
+<span class="nc" id="L361">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(&quot;Klant adres &quot; + adres);</span>
+<span class="nc" id="L362">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel()</span>
+<span class="nc" id="L363">							.addElement(&quot;Klant woonplaats &quot; + woonplaats);</span>
+<span class="nc" id="L364">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel()</span>
+<span class="nc" id="L365">							.addElement(&quot;Klant telefoonnummer &quot; + telefoonnummer);</span>
+<span class="nc" id="L366">					KlantInformatie info= new KlantInformatie(naam, adres, woonplaats, telefoonnummer);</span>
+<span class="nc" id="L367">					klantNummer = karel.registrerenKlant(info);</span>
+<span class="nc" id="L368">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel()</span>
+<span class="nc" id="L369">							.addElement(&quot;Klant &quot; + klantNummer + &quot; geregistreerd&quot;);</span>
+<span class="nc" id="L370">					listUitvoer.ensureIndexIsVisible(</span>
+<span class="nc" id="L371">							KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().getSize() - 1);</span>
+
+<span class="nc" id="L373">				} else {</span>
+<span class="nc" id="L374">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(&quot;Geen klant geregistreerd&quot;);</span>
+<span class="nc" id="L375">					listUitvoer.ensureIndexIsVisible(</span>
+<span class="nc" id="L376">							KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().getSize() - 1);</span>
+
+				}
+<span class="nc" id="L379">			});</span>
+		}
+<span class="nc" id="L381">		return buttonRegistrerenKlant;</span>
+	}
+
+	private javax.swing.JButton getButtonReserveren() {
+<span class="nc bnc" id="L385" title="All 2 branches missed.">		if (buttonReserveren == null) {</span>
+<span class="nc" id="L386">			buttonReserveren = new javax.swing.JButton();</span>
+<span class="nc" id="L387">			buttonReserveren.setSize(185, 27);</span>
+<span class="nc" id="L388">			buttonReserveren.setText(&quot;Reserveren&quot;);</span>
+<span class="nc" id="L389">			buttonReserveren.setLocation(10, 290);</span>
+<span class="nc" id="L390">			buttonReserveren.addActionListener(e -&gt; {</span>
+<span class="nc" id="L391">				final String[] args = new String[0];</span>
+<span class="nc" id="L392">				final ReserveringDialog reservering = new ReserveringDialog(&quot;Reserveren&quot;, args);</span>
+<span class="nc bnc" id="L393" title="All 2 branches missed.">				if (reservering.isActionOK()) {</span>
+<span class="nc" id="L394">					final String typeTocht = reservering.getTypeTocht();</span>
+<span class="nc" id="L395">					final String typeBoot = reservering.getTypeBoot();</span>
+<span class="nc" id="L396">					final LocalDate datum = reservering.getDatum();</span>
+<span class="nc" id="L397">					final LocalTime tijd = reservering.getTijd();</span>
+<span class="nc" id="L398">					final Duration duur = reservering.getDuur();</span>
+
+<span class="nc" id="L400">					final LocalDateTime datumtijd = LocalDateTime.of(datum, tijd);</span>
+
+<span class="nc" id="L402">					final Boolean reserverenGeslaagd = karel.reserveren(typeTocht, typeBoot, datumtijd, duur);</span>
+<span class="nc bnc" id="L403" title="All 2 branches missed.">					if (reserverenGeslaagd) {</span>
+<span class="nc" id="L404">						KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(&quot;Reservering vastgelegd&quot;);</span>
+<span class="nc" id="L405">						KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(&quot;Type Tocht &quot; + typeTocht);</span>
+<span class="nc" id="L406">						KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(&quot;Type Boot &quot; + typeBoot);</span>
+<span class="nc" id="L407">						KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(&quot;Datum &quot; + datum);</span>
+<span class="nc" id="L408">						KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(&quot;Tijd &quot; + tijd);</span>
+<span class="nc" id="L409">						KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(&quot;Duur &quot; + duur);</span>
+<span class="nc" id="L410">						updateOverzichtVrijeBoten();</span>
+					} else {
+<span class="nc" id="L412">						KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel()</span>
+<span class="nc" id="L413">								.addElement(&quot;Reservering niet mogelijk&quot;);</span>
+					}
+<span class="nc" id="L415">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel()</span>
+<span class="nc" id="L416">							.addElement(&quot;-------------------------------&quot;);</span>
+<span class="nc" id="L417">					listUitvoer.ensureIndexIsVisible(</span>
+<span class="nc" id="L418">							KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().getSize() - 1);</span>
+
+<span class="nc" id="L420">				} else {</span>
+<span class="nc" id="L421">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(&quot;Geen klant geregistreerd&quot;);</span>
+<span class="nc" id="L422">					listUitvoer.ensureIndexIsVisible(</span>
+<span class="nc" id="L423">							KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().getSize() - 1);</span>
+
+				}
+<span class="nc" id="L426">			});</span>
+		}
+<span class="nc" id="L428">		return buttonReserveren;</span>
+	}
+
+	private javax.swing.JButton getButtonKlantInformatie() {
+<span class="nc bnc" id="L432" title="All 2 branches missed.">		if (buttonKlantInformatie == null) {</span>
+<span class="nc" id="L433">			buttonKlantInformatie = new javax.swing.JButton();</span>
+<span class="nc" id="L434">			buttonKlantInformatie.setSize(145, 27);</span>
+<span class="nc" id="L435">			buttonKlantInformatie.setText(&quot;Opvragen klantinfo&quot;);</span>
+<span class="nc" id="L436">			buttonKlantInformatie.setLocation(10, 325);</span>
+<span class="nc" id="L437">			buttonKlantInformatie.addActionListener(e -&gt; {</span>
+				try {
+<span class="nc" id="L439">					final int klantNummer = Integer</span>
+<span class="nc" id="L440">							.parseInt(KarelsVerhuurbedrijfInspectie.this.getTextKlantnummerInformatie().getText());</span>
+<span class="nc" id="L441">					final String title = &quot;Klantinformatie &quot; + klantNummer;</span>
+<span class="nc" id="L442">					final KlantInformatie klantTO = karel.getKlantInformatie(klantNummer);</span>
+<span class="nc" id="L443">					final String[] columnNames = { &quot;Naam&quot;, &quot;Adres&quot;, &quot;Woonplaats&quot;, &quot;Telefoonnr&quot; };</span>
+
+<span class="nc" id="L445">					final Object[][] columnData = { { klantTO.geefNaam(), klantTO.geefAdres(), klantTO.geefWoonplaats(),</span>
+<span class="nc" id="L446">							klantTO.geefTelefoonnr() },</span>
+							// {&quot;John&quot;, &quot;Doe&quot;,&quot;Rowing&quot;, new Integer(3), new Boolean(true)},
+							// {&quot;Sue&quot;, &quot;Black&quot;,&quot;Knitting&quot;, new Integer(2), new Boolean(false)},
+							// {&quot;Jane&quot;, &quot;White&quot;,&quot;Speed reading&quot;, new Integer(20), new Boolean(true)},
+							// {&quot;Joe&quot;, &quot;Brown&quot;,&quot;Pool&quot;, new Integer(10), new Boolean(false)}
+					};
+
+<span class="nc" id="L453">					JScrollPaneDemo.createAndShowGUI(title, columnNames, columnData);</span>
+
+<span class="nc" id="L455">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel()</span>
+<span class="nc" id="L456">							.addElement(&quot;Klant&quot; + klantNummer + &quot; Informatie opgehaald&quot;);</span>
+<span class="nc" id="L457">					listUitvoer.ensureIndexIsVisible(</span>
+<span class="nc" id="L458">							KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().getSize() - 1);</span>
+<span class="nc" id="L459">				} catch (final NumberFormatException parm1) {</span>
+<span class="nc" id="L460">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel()</span>
+<span class="nc" id="L461">							.addElement(&quot;Klantnummer niet correct gevuld&quot;);</span>
+<span class="nc" id="L462">				} catch (final IllegalStateException parm2) {</span>
+<span class="nc" id="L463">					KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(parm2.getMessage());</span>
+<span class="nc" id="L464">				}</span>
+<span class="nc" id="L465">			});</span>
+		}
+<span class="nc" id="L467">		return buttonKlantInformatie;</span>
+	}
+
+	private javax.swing.JTextField getTextKlantnummerInformatie() {
+<span class="nc bnc" id="L471" title="All 2 branches missed.">		if (textKlantnummerInformatie == null) {</span>
+<span class="nc" id="L472">			textKlantnummerInformatie = new javax.swing.JTextField();</span>
+<span class="nc" id="L473">			textKlantnummerInformatie.setSize(35, 25);</span>
+<span class="nc" id="L474">			textKlantnummerInformatie.setLocation(160, 325);</span>
+		}
+<span class="nc" id="L476">		return textKlantnummerInformatie;</span>
+	}
+
+	private javax.swing.JButton getButtonBotenOverzicht() {
+<span class="nc bnc" id="L480" title="All 2 branches missed.">		if (buttonBotenOverzicht == null) {</span>
+<span class="nc" id="L481">			buttonBotenOverzicht = new javax.swing.JButton();</span>
+<span class="nc" id="L482">			buttonBotenOverzicht.setSize(185, 27);</span>
+<span class="nc" id="L483">			buttonBotenOverzicht.setText(&quot;Overzicht vrije boten&quot;);</span>
+<span class="nc" id="L484">			buttonBotenOverzicht.setLocation(10, 360);</span>
+<span class="nc" id="L485">			buttonBotenOverzicht.addActionListener(e -&gt; {</span>
+				try {
+<span class="nc" id="L487">					toonOverzichtVrijeBoten();</span>
+
+					/*
+					 * KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(&quot;Boot &quot;
+					 * + bootnr + &quot; Informatie opgehaald&quot;);
+					 * KarelsVerhuurbedrijfInspectie.this.listUitvoer.ensureIndexIsVisible(
+					 * KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().getSize() - 1);
+					 */
+<span class="nc" id="L495">				} catch (final NumberFormatException parm1) {</span>
+					// KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(&quot;Bootnummer
+					// niet correct gevuld&quot;);
+<span class="nc" id="L498">				} catch (final IllegalStateException parm2) {</span>
+					// KarelsVerhuurbedrijfInspectie.this.getIvjOverzichtModel().addElement(parm.getMessage());
+<span class="nc" id="L500">				}</span>
+<span class="nc" id="L501">			});</span>
+		}
+<span class="nc" id="L503">		return buttonBotenOverzicht;</span>
+	}
+
+	private void toonOverzichtVrijeBoten() {
+<span class="nc" id="L507">		final String[] columnNames = { &quot;Bootnummer&quot;, &quot;Naam&quot;, &quot;Boot type&quot;, &quot;Aantal personen&quot;, &quot;Inspectie nodig&quot; };</span>
+
+<span class="nc" id="L509">		final ArrayList&lt;BootInformatie&gt; vrijeboten = KarelsVerhuurbedrijfInspectie.this.karel</span>
+<span class="nc" id="L510">				.geefVrijeBoten(LocalDateTime.now(), Duration.ofHours(2));</span>
+
+<span class="nc" id="L512">		Object[][] columnData = null;</span>
+<span class="nc" id="L513">		final int size = vrijeboten.size();</span>
+<span class="nc bnc" id="L514" title="All 2 branches missed.">		if (size &gt; 0) {</span>
+<span class="nc" id="L515">			columnData = new Object[size][5];</span>
+		}
+<span class="nc bnc" id="L517" title="All 2 branches missed.">		for (int i = 0; i &lt; size; i++) {</span>
+<span class="nc" id="L518">			final BootInformatie bo = vrijeboten.get(i);</span>
+<span class="nc" id="L519">			columnData[i][0] = bo.getNummer();</span>
+<span class="nc" id="L520">			columnData[i][1] = bo.getNaam();</span>
+<span class="nc" id="L521">			columnData[i][2] = bo.getType();</span>
+<span class="nc" id="L522">			columnData[i][3] = bo.getAantalPersonen();</span>
+<span class="nc" id="L523">			columnData[i][4] = bo.getInspectie();</span>
+		}
+<span class="nc" id="L525">		JScrollPaneDemo.createAndShowGUI(&quot;Overzicht vrije boten&quot;, columnNames, columnData);</span>
+<span class="nc" id="L526">	}</span>
+
+	private void updateOverzichtVrijeBoten() {
+<span class="nc bnc" id="L529" title="All 2 branches missed.">		if (JScrollPaneDemo.getFrame() != null) {</span>
+<span class="nc" id="L530">			toonOverzichtVrijeBoten();</span>
+		}
+
+<span class="nc" id="L533">	}</span>
+
+	private javax.swing.JButton getButtonAfsluiten() {
+<span class="nc bnc" id="L536" title="All 2 branches missed.">		if (buttonAfsluiten == null) {</span>
+<span class="nc" id="L537">			buttonAfsluiten = new javax.swing.JButton();</span>
+<span class="nc" id="L538">			buttonAfsluiten.setSize(100, 27);</span>
+<span class="nc" id="L539">			buttonAfsluiten.setLocation(10, 395);</span>
+<span class="nc" id="L540">			buttonAfsluiten.setText(&quot;Afsluiten&quot;);</span>
+<span class="nc" id="L541">			buttonAfsluiten.addActionListener(e -&gt; {</span>
+<span class="nc" id="L542">				KarelsVerhuurbedrijfInspectie.this.dispose();</span>
+<span class="nc bnc" id="L543" title="All 2 branches missed.">				if (JScrollPaneDemo.getFrame() != null) {</span>
+<span class="nc" id="L544">					JScrollPaneDemo.getFrame().dispose();</span>
+				}
+<span class="nc" id="L546">			});</span>
+		}
+<span class="nc" id="L548">		return buttonAfsluiten;</span>
+	}
+
+	private javax.swing.DefaultListModel&lt;String&gt; getIvjOverzichtModel() {
+<span class="nc bnc" id="L552" title="All 2 branches missed.">		if (ivjOverzichtModel == null) {</span>
+<span class="nc" id="L553">			ivjOverzichtModel = new javax.swing.DefaultListModel&lt;&gt;();</span>
+		}
+<span class="nc" id="L555">		return ivjOverzichtModel;</span>
+	}
+
+	private javax.swing.JScrollPane getScrollPaneUitvoer() {
+<span class="nc bnc" id="L559" title="All 2 branches missed.">		if (scrollPaneUitvoer == null) {</span>
+<span class="nc" id="L560">			scrollPaneUitvoer = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L561">			scrollPaneUitvoer.setViewportView(getListUitvoer());</span>
+<span class="nc" id="L562">			scrollPaneUitvoer.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);</span>
+<span class="nc" id="L563">			scrollPaneUitvoer.setBorder(new javax.swing.border.SoftBevelBorder(BevelBorder.LOWERED));</span>
+		}
+<span class="nc" id="L565">		return scrollPaneUitvoer;</span>
+	}
+
+	private static String durationToString(final Duration duration) {
+<span class="nc bnc" id="L569" title="All 2 branches missed.">		final long seconds = duration == null ? 0 : duration.getSeconds();</span>
+<span class="nc" id="L570">		return String.format(&quot;%02d:%02d:%02d&quot;, seconds / 3600, seconds % 3600 / 60, seconds % 60);</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

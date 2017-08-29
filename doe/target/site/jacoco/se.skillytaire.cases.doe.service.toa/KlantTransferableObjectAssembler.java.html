@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="nl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>KlantTransferableObjectAssembler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">DOE</a> &gt; <a href="index.source.html" class="el_package">se.skillytaire.cases.doe.service.toa</a> &gt; <span class="el_source">KlantTransferableObjectAssembler.java</span></div><h1>KlantTransferableObjectAssembler.java</h1><pre class="source lang-java linenums">package se.skillytaire.cases.doe.service.toa;
+
+import java.time.LocalDateTime;
+
+import se.skillytaire.cases.doe.common.VoertuigType;
+import se.skillytaire.cases.doe.domain.Boot;
+import se.skillytaire.cases.doe.domain.ElektrischeBoot;
+import se.skillytaire.cases.doe.domain.Klant;
+import se.skillytaire.cases.doe.domain.RoeiBoot;
+import se.skillytaire.cases.doe.service.BootInformatie;
+import se.skillytaire.cases.doe.service.KlantInformatie;
+
+public class KlantTransferableObjectAssembler implements TransferableObjectAssembler&lt;KlantInformatie, Klant&gt; {
+
+<span class="nc" id="L15">	private static final KlantTransferableObjectAssembler INSTANCE = new KlantTransferableObjectAssembler();</span>
+
+<span class="nc" id="L17">	private KlantTransferableObjectAssembler() {</span>
+
+<span class="nc" id="L19">	}</span>
+
+	@Override
+	public Klant assemble(KlantInformatie klantInfo) {
+<span class="nc" id="L23">		final String eenNaam=klantInfo.geefNaam();</span>
+<span class="nc" id="L24">		final String eenAdres=klantInfo.geefAdres();</span>
+<span class="nc" id="L25">		final String eenWoonplaats=klantInfo.geefWoonplaats();</span>
+<span class="nc" id="L26">		final String eenTelefoonnr=klantInfo.geefTelefoonnr();</span>
+<span class="nc" id="L27">		final Klant klant = new Klant(eenNaam, eenAdres, eenWoonplaats, eenTelefoonnr);</span>
+
+		
+<span class="nc" id="L30">		return klant;</span>
+	}
+
+	public static KlantTransferableObjectAssembler getInstance() {
+<span class="nc" id="L34">		return KlantTransferableObjectAssembler.INSTANCE;</span>
+	}
+
+	@Override
+	public KlantInformatie assemble(final Klant eenKlant) {
+<span class="nc" id="L39">		final String klantNaam = eenKlant.getNaam();</span>
+<span class="nc" id="L40">		final String woonplaats = eenKlant.getWoonplaats();</span>
+<span class="nc" id="L41">		final String telefoonnr = eenKlant.getTelefoonnr();</span>
+<span class="nc" id="L42">		final String adres = eenKlant.getAdres();</span>
+<span class="nc" id="L43">		final KlantInformatie klantTO = new KlantInformatie(klantNaam, adres, woonplaats, telefoonnr);</span>
+<span class="nc" id="L44">		return klantTO;</span>
+	}
+
+}
+/*
+*/
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

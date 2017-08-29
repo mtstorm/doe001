@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="nl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BootInformatie.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">DOE</a> &gt; <a href="index.source.html" class="el_package">se.skillytaire.cases.doe.service</a> &gt; <span class="el_source">BootInformatie.java</span></div><h1>BootInformatie.java</h1><pre class="source lang-java linenums">package se.skillytaire.cases.doe.service;
+
+import java.time.LocalDateTime;
+import java.util.Comparator;
+
+import se.skillytaire.cases.doe.common.VoertuigType;
+
+public class BootInformatie implements TransferableObject {
+
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+	private final VoertuigType type;
+	private final int aantalPersonen;
+	private final LocalDateTime verwachteEindtijd;
+
+	private final String naam;
+	private final int nummer;
+	private final boolean inspectie;
+	private final double prijs;
+	public double getPrijs() {
+<span class="nc" id="L23">		return prijs;</span>
+	}
+
+	// public BootTransferObject(final BootType bootType, final int aantalPersonen,
+	// final String verwachteEindtijd) {
+	// this.type = bootType;
+	// this.aantalPersonen = aantalPersonen;
+	// this.verwachteEindtijd = verwachteEindtijd;
+	// naam = &quot;onbekend&quot;;//VIEW
+	// nummer = 0;
+	// inspectie = false;
+	// }
+	// TODO He constructors lijken verdacht opelkaar, chaning???
+	public BootInformatie(final VoertuigType bootType, final String naam, final int bootnummer,
+<span class="nc" id="L37">			final int aantalPersonen, final boolean inspectie, final LocalDateTime verwachteEindtijd, double prijs) {</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">		if (bootType == null) {</span>
+<span class="nc" id="L39">			throw new IllegalArgumentException(&quot;Type is void&quot;);</span>
+		}
+<span class="nc" id="L41">		this.type = bootType;</span>
+<span class="nc" id="L42">		this.aantalPersonen = aantalPersonen;</span>
+<span class="nc" id="L43">		this.verwachteEindtijd = verwachteEindtijd;</span>
+<span class="nc" id="L44">		this.naam = naam;</span>
+<span class="nc" id="L45">		this.nummer = bootnummer;</span>
+<span class="nc" id="L46">		this.inspectie = inspectie;</span>
+<span class="nc" id="L47">		this.prijs = prijs;</span>
+<span class="nc" id="L48">	}</span>
+
+	public VoertuigType getType() {
+<span class="nc" id="L51">		return type;</span>
+	}
+
+	public String getNaam() {
+<span class="nc" id="L55">		return naam;</span>
+	}
+
+	public int getNummer() {
+<span class="nc" id="L59">		return nummer;</span>
+	}
+
+	public int getAantalPersonen() {
+<span class="nc" id="L63">		return aantalPersonen;</span>
+	}
+
+	public LocalDateTime getVerwachteEindtijd() {
+<span class="nc" id="L67">		return verwachteEindtijd;</span>
+	}
+
+	public boolean getInspectie() {
+<span class="nc" id="L71">		return inspectie;</span>
+	}
+
+	@Override
+	public String toString() {
+<span class="nc" id="L76">		return String.format(</span>
+				&quot;BootInformatie [type=%s, aantalPersonen=%s, verwachteEindtijd=%s, naam=%s, nummer=%s, inspectie=%s]&quot;,
+<span class="nc" id="L78">				type, aantalPersonen, verwachteEindtijd, naam, nummer, inspectie);</span>
+	}
+
+	public static Comparator&lt;BootInformatie&gt; comparatorByNumber() {
+<span class="nc" id="L82">		return (o1, o2) -&gt; {</span>
+<span class="nc" id="L83">			return Integer.compare(o1.getNummer(), o2.getNummer());</span>
+		};
+	}
+
+	public static Comparator&lt;BootInformatie&gt; comparatorByName() {
+<span class="nc" id="L88">		return (o1, o2) -&gt; {</span>
+<span class="nc" id="L89">			return o1.getNaam().compareTo(o2.getNaam());</span>
+		};
+	}
+
+	public static Comparator&lt;BootInformatie&gt; comparatorByType() {
+<span class="nc" id="L94">		return (o1, o2) -&gt; {</span>
+<span class="nc" id="L95">			return o1.getType().compareTo(o2.getType());</span>
+		};
+	}
+
+	public static Comparator&lt;BootInformatie&gt; comparatorByAantalPersonen() {
+<span class="nc" id="L100">		return (o1, o2) -&gt; {</span>
+<span class="nc" id="L101">			return Integer.compare(o1.getAantalPersonen(), o2.getAantalPersonen());</span>
+		};
+	}
+
+	public static Comparator&lt;BootInformatie&gt; comparatorByInspectie() {
+<span class="nc" id="L106">		return (o1, o2) -&gt; {</span>
+<span class="nc" id="L107">			return Boolean.compare(o1.getInspectie(), o2.getInspectie());</span>
+		};
+	}
+	// TODO hasMethods
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="nl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StartTochtInformatie.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">DOE</a> &gt; <a href="index.source.html" class="el_package">se.skillytaire.cases.doe.service</a> &gt; <span class="el_source">StartTochtInformatie.java</span></div><h1>StartTochtInformatie.java</h1><pre class="source lang-java linenums">package se.skillytaire.cases.doe.service;
+
+import java.time.Duration;
+
+import se.skillytaire.cases.doe.common.VoertuigType;
+import se.skillytaire.cases.doe.common.TochtType;
+
+public class StartTochtInformatie implements TransferableObject {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+	private final VoertuigType bootType;
+	private final TochtType tochtType;
+	private final Duration verwachteDuur;
+	private final int bootNummer;
+
+
+	private final static int NO_BOOT_NR = -1;
+
+<span class="nc" id="L21">	private StartTochtInformatie(final int bootNummer, final VoertuigType bootType, final TochtType tochtType, final Duration verwachteDuur) {</span>
+<span class="nc" id="L22">		this.bootNummer = bootNummer;</span>
+<span class="nc" id="L23">		this.bootType = bootType;</span>
+<span class="nc" id="L24">		this.tochtType = tochtType;</span>
+<span class="nc" id="L25">		this.verwachteDuur = verwachteDuur;</span>
+<span class="nc" id="L26">	}</span>
+	// FIXME null checks
+	public StartTochtInformatie(final VoertuigType bootType, final TochtType tochtType, final Duration verwachteDuur) {
+<span class="nc" id="L29">		this(NO_BOOT_NR, bootType, tochtType, verwachteDuur);</span>
+<span class="nc" id="L30">	}</span>
+	public StartTochtInformatie(final int bootNummer,final TochtType tochtType,final Duration verwachteDuur) {
+<span class="nc" id="L32">		this(bootNummer, null,tochtType,verwachteDuur);</span>
+<span class="nc" id="L33">	}</span>
+			
+	public VoertuigType getBootType() {
+<span class="nc" id="L36">		return bootType;</span>
+	}
+
+	public TochtType getTochtType() {
+<span class="nc" id="L40">		return tochtType;</span>
+	}
+
+	public Duration getVerwachteDuur() {
+<span class="nc" id="L44">		return verwachteDuur;</span>
+	}
+	
+	public boolean isByNumber() {
+<span class="nc bnc" id="L48" title="All 2 branches missed.">		return this.bootNummer != NO_BOOT_NR;</span>
+	}
+	public int getBootNummer() {
+<span class="nc" id="L51">		return bootNummer;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

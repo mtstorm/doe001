@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="nl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Voertuig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">DOE</a> &gt; <a href="index.source.html" class="el_package">se.skillytaire.cases.doe.domain</a> &gt; <span class="el_source">Voertuig.java</span></div><h1>Voertuig.java</h1><pre class="source lang-java linenums">package se.skillytaire.cases.doe.domain;
+
+import java.io.Serializable;
+import java.time.Duration;
+import java.time.LocalDateTime;
+
+import se.skillytaire.cases.doe.common.VoertuigType;
+
+public abstract class Voertuig extends AbstractEntity  {
+
+<span class="fc" id="L11">	private static  long serialVersionUID = 1L;</span>
+	
+	private Tocht laatsteTocht;
+	
+	private  Tochtenbak eenTochtenbak;
+	private  Tochtenbak reserveringen;
+	
+<span class="fc" id="L18">	private static  Duration INSPECTIE_DUUR = Duration.ofSeconds(10);</span>
+	
+	private  int aantalPersonen;
+	private  double prijs;
+	private  VoertuigType type;
+
+	/**
+	 * Deze constructor mag niet gebruikt worden
+	 */
+<span class="nc" id="L27">	public Voertuig() {</span>
+		
+<span class="nc" id="L29">	}</span>
+	
+	public Voertuig( VoertuigType type) {
+<span class="nc" id="L32">		this(type, -1, 0);</span>
+<span class="nc" id="L33">	}</span>
+
+<span class="fc" id="L35">	public Voertuig( VoertuigType type,  int aantalPersonen,  double prijs) {</span>
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">		if (type == null) {</span>
+<span class="nc" id="L37">			throw new IllegalArgumentException(&quot;Boem&quot;);</span>
+		}
+<span class="fc" id="L39">		this.type = type;</span>
+
+<span class="fc" id="L41">		this.aantalPersonen = aantalPersonen;</span>
+
+<span class="fc" id="L43">		eenTochtenbak = new Tochtenbak();</span>
+<span class="fc" id="L44">		reserveringen = new Tochtenbak();</span>
+<span class="fc" id="L45">		uitvoerenInspectie();</span>
+
+<span class="fc" id="L47">		this.prijs = prijs;</span>
+
+<span class="fc" id="L49">	}</span>
+
+	/**
+	 * Beindigd de tocht
+	 *
+	 * @return de duur van de gemaakte tocht
+	 * @throws BootBeschikbaarException
+	 *             als de boot beschikbaar is
+	 */
+	public Duration beeindigTocht() throws BootBeschikbaarException, BootInspectieException {
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">		if (isBeschikbaar()) {</span>
+<span class="nc" id="L60">			throw new BootBeschikbaarException(&quot;Boot  maakt momenteel geen tocht&quot;);</span>
+		}
+<span class="fc" id="L62">		laatsteTocht.beeindig();</span>
+<span class="fc" id="L63">		 Duration duur = laatsteTocht.getDuur();</span>
+<span class="fc" id="L64">		return duur;</span>
+	}
+
+	public void startTocht( Tocht nieuweTocht) {
+<span class="nc" id="L68">		checkInspectie();</span>
+<span class="nc" id="L69">		laatsteTocht = nieuweTocht;</span>
+<span class="nc" id="L70">		eenTochtenbak.bewaar(nieuweTocht);</span>
+<span class="nc" id="L71">	}</span>
+
+	public Tocht gaMeerTochtMaken( Duration verwachteDuur) throws BootInspectieException {
+<span class="fc" id="L74">		checkInspectie();</span>
+<span class="fc" id="L75">		laatsteTocht = new MeerTocht(verwachteDuur);</span>
+
+<span class="fc" id="L77">		eenTochtenbak.bewaar(laatsteTocht);</span>
+<span class="fc" id="L78">		return laatsteTocht;</span>
+	}
+
+	public Tocht gaRivierTochtMaken( Duration verwachteDuur) throws BootInspectieException {
+<span class="fc" id="L82">		checkInspectie();</span>
+<span class="fc" id="L83">		laatsteTocht = new RivierTocht(verwachteDuur);</span>
+<span class="fc" id="L84">		eenTochtenbak.bewaar(laatsteTocht);</span>
+<span class="fc" id="L85">		return laatsteTocht;</span>
+	}
+
+	private void checkInspectie() throws BootInspectieException {
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">		if (isInspectieNodig()) {</span>
+<span class="nc" id="L90">			throw new BootInspectieException(&quot;Voertuig heeft inspectie nodig&quot;);</span>
+		}
+<span class="fc" id="L92">	}</span>
+
+	public boolean isInspectieNodig() {
+<span class="pc bpc" id="L95" title="1 of 2 branches missed.">		return eenTochtenbak.geefTotaleDuur().getSeconds() &gt; Voertuig.INSPECTIE_DUUR.getSeconds();</span>
+	}
+
+	public boolean isBeschikbaar() {
+		boolean isBeschikbaar;
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">		if (isInspectieNodig()) {</span>
+<span class="nc" id="L101">			isBeschikbaar = false;</span>
+		} else {
+<span class="fc" id="L103">			isBeschikbaar = this.isVrij();</span>
+		}
+<span class="fc" id="L105">		return isBeschikbaar;</span>
+	}
+
+	private boolean isVrij() {
+		boolean isVrij;
+<span class="fc bfc" id="L110" title="All 2 branches covered.">		if (laatsteTocht == null) {</span>
+<span class="fc" id="L111">			isVrij = true;</span>
+		} else {
+<span class="fc" id="L113">			isVrij = laatsteTocht.isBeeindigd();</span>
+		}
+<span class="fc" id="L115">		return isVrij;</span>
+	}
+
+	public boolean isVrij( LocalDateTime begintijd,  Duration duur) {
+		boolean isVrij;
+<span class="fc" id="L120">		 boolean isReserveringMogelijk = reserveringen.isReserveringMogelijk(begintijd, duur);</span>
+<span class="fc bfc" id="L121" title="All 4 branches covered.">		if (laatsteTocht == null || laatsteTocht.isBeeindigd()) {</span>
+<span class="fc" id="L122">			isVrij = isReserveringMogelijk;</span>
+		} else {
+<span class="fc" id="L124">			 LocalDateTime verwachteEindtijd = laatsteTocht.getVerwachteEindTijd();</span>
+<span class="fc bfc" id="L125" title="All 4 branches covered.">			isVrij = begintijd.compareTo(verwachteEindtijd) &gt;= 0 &amp;&amp; isReserveringMogelijk;</span>
+		}
+<span class="fc" id="L127">		return isVrij;</span>
+	}
+
+	public void uitvoerenInspectie() throws BootInspectieException {
+<span class="pc bpc" id="L131" title="1 of 2 branches missed.">		if (!this.isVrij()) {</span>
+<span class="nc" id="L132">			throw new BootInspectieException(</span>
+					&quot;De boot kan niet worden geinspecteerd, de boot is nog niet vrij.&quot;);
+		}
+<span class="fc" id="L135">		eenTochtenbak.clear();</span>
+<span class="fc" id="L136">	}</span>
+
+
+
+	@Override
+	public String toString() {
+<span class="nc" id="L142">		return String.format(&quot;Voertuig [/isVrij=%b, /inspecieNodig=%b]&quot;,  isBeschikbaar(),</span>
+<span class="nc" id="L143">				isInspectieNodig());</span>
+	}
+
+
+
+	/*
+	 * public void print() { System.out.println(&quot;inhoud eenTochtenbak van boot &quot; +
+	 * this.bootNummer ); System.out.println(&quot;inhoud alleTochtenbak van boot &quot; +
+	 * this.bootNummer ); }
+	 */
+//TODO generieker
+	public Tocht reserveerRivierTocht( LocalDateTime beginTijd,  Duration duur) {
+<span class="nc bnc" id="L155" title="All 2 branches missed.">		if (reserveringen.isReserveringMogelijk(beginTijd, duur)) {</span>
+<span class="nc" id="L156">			 Tocht nieuweTocht = new RivierTocht(beginTijd, duur);</span>
+<span class="nc" id="L157">			reserveringen.bewaar(nieuweTocht);</span>
+<span class="nc" id="L158">			return nieuweTocht;</span>
+		}
+<span class="nc" id="L160">		return null;</span>
+	}
+	//TODO generieker
+	public Tocht reserveerMeerTocht( LocalDateTime beginTijd,  Duration duur) {
+<span class="fc bfc" id="L164" title="All 2 branches covered.">		if (reserveringen.isReserveringMogelijk(beginTijd, duur)) {</span>
+<span class="fc" id="L165">			 Tocht nieuweTocht = new MeerTocht(beginTijd, duur);</span>
+<span class="fc" id="L166">			reserveringen.bewaar(nieuweTocht);</span>
+<span class="fc" id="L167">			return nieuweTocht;</span>
+		}
+<span class="fc" id="L169">		return null;</span>
+	}
+	Tocht getLaatsteTocht() {
+<span class="nc" id="L172">		return laatsteTocht;</span>
+	}
+
+	void setLaatsteTocht( Tocht laatsteTocht) {
+<span class="nc" id="L176">		this.laatsteTocht = laatsteTocht;</span>
+<span class="nc" id="L177">	}</span>
+
+
+
+	public int getAantalPersonen() {
+<span class="fc" id="L182">		return aantalPersonen;</span>
+	}
+
+	public double getPrijs() {
+<span class="fc" id="L186">		return prijs;</span>
+	}
+
+	private boolean hasLaatsteTocht() {
+<span class="nc bnc" id="L190" title="All 2 branches missed.">		return laatsteTocht != null;</span>
+	}
+
+	public LocalDateTime getVerwachteEindTijd() {
+<span class="nc" id="L194">		LocalDateTime verwachteEindTijd = null;</span>
+<span class="nc bnc" id="L195" title="All 4 branches missed.">		if (hasLaatsteTocht() &amp;&amp; !laatsteTocht.isBeeindigd()) {</span>
+<span class="nc" id="L196">			verwachteEindTijd = laatsteTocht.getVerwachteEindTijd();</span>
+		}
+<span class="nc" id="L198">		return verwachteEindTijd;</span>
+	}
+
+	public VoertuigType getType() {
+<span class="nc" id="L202">		return type;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

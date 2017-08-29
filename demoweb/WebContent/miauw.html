@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+    <link href="./resources/style/kitty.css" rel="stylesheet" type="text/css"></link>
+    <script src="./resources/javascript/miauw.js"></script>
+
+    
+   </head>
+   <body>
+	  <h1>Hallo</h1>
+	  <img 
+	  	width="100em" 
+	  	alt="Hallo ik ben Kitty" 
+	  	src="./resources/images/hello-kitty.svg_.png"
+	  	onclick="javascript:zegMiauw('Miauw');";
+	  	>
+	  <p id="miauwplek" >Dit is een stukje tekst</p>
+	  <hr style="border-color:black;" size="1px"/>
+	  <form onSubmit="return zegMiauw(this.sayit.value);">
+	     <input type="submit" value="Do not push me"/>
+	     <input name="sayit" type="text" />
+	  </form>
+	  
+	  <table>
+	  	<thead>
+	  	<tr>
+	  		<th>Kolom 1</th>
+	  		<th>Kolom 2</th>
+	  	</tr>
+	  	</thead>
+	  	<tbody>
+		  	<tr>
+		  		<td>Value 1</td>
+		  		<td>Value 2</td>
+		  	</tr>	
+		  	<tr>
+		  		<td>Value 1</td>
+		  		<td>Value 2</td>
+		  	</tr>
+		  	<tr>
+		  		<td>Value 1</td>
+		  		<td>Value 2</td>
+		  	</tr>
+		  	<tr>
+		  		<td>Value 1</td>
+		  		<td>Value 2</td>
+		  	</tr>		  			  			  	
+	  	</tbody>  	
+	  </table>
+   </body>
+</html>
