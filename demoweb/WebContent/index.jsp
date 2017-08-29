@@ -36,17 +36,32 @@
 		     <input type="submit" value="Beeindig tocht"/>
 		 </form>
 		  <hr/>
-		 <input type="submit" value="Uitvoeren inspectie"/> <input name="inspectie" type="text" />  <br>
-		 <input type="submit" value="Aantal beeindigde tochten"/> <br>
-		 <input type="submit" value="Gemiddelde duur"/> <br>
-		 
+		  <form name = "uitvoerenInspectie" action = "UitvoerenInspectie.html" method = "post"> 
+		  Bootnr <input name = "inspectie" type="text" /> <br>
+		  <input type= "submit" value="Uitvoeren inspectie"/>
+		  </form>
+		  
+		  
+
+		 <hr/>	
+		 	<a id="aantalbeeindigdetochten" href="getaantalbeeindigdetochten.html">Aantal beeindigde tochten:
+		 	<c:choose><c:when test="${not empty aantalbeeindigdetochten}">
+   				${aantalbeeindigdetochten}  
+   			</c:when></c:choose><br/> </a>
+		 <hr/>
+		 	<a id="gemiddeldeduur" href="getgemiddeldeduur.html">Gemiddelde duur:
+		 	<c:choose><c:when test="${not empty gemiddeldeduur}">
+   				${gemiddeldeduur} minuten 
+   			</c:when></c:choose><br/> </a>
+		 <hr/>
+		 		 
 		 <form name="BootInfoForm" action="bootinformatie.html" method="get">
 		 <span> Bootnr </span> <input name="bootnr" type="text" /> <br>
 		 <input type="submit" value="Geef bootinformatie"/>
 		 </form>
 		 
 		 <input type="submit" value="Registreren klant"/> <br>
-		 <input type="submit" value="Reserveren"/> <br>
+		 <a href ="reserveertocht.html"> <input   type="submit" value="Reserveren"/> </a><br/>
 		 
 		 <!-- Action verwijderd -->		
 		 <form name="KlantInfoForm" method="get">
