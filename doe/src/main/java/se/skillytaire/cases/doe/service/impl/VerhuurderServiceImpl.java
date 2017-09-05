@@ -224,7 +224,7 @@ public class VerhuurderServiceImpl implements VerhuurderService, Serializable {
 	@Override
 	public boolean reserveren(final String typeTocht, final String typeBoot, final LocalDateTime datumtijd,
 			final Duration duur) throws GeenBootVrijException {
-		System.out.println(typeTocht + " " + typeBoot + " " + datumtijd.toString() + " " + duur.toString());
+		
 		
 		Boot eenBoot = null;
 		if (typeBoot.equals("ROEI_BOOT")) {
@@ -236,7 +236,7 @@ public class VerhuurderServiceImpl implements VerhuurderService, Serializable {
 				final Tocht eenTocht = eenBoot.reserveerRivierTocht(datumtijd, duur);
 				return eenTocht != null;
 			}
-		} else if (typeBoot.equals("ELEKTRISCH")) {
+		} else if (typeBoot.equals("ELEKTRISCHE_BOOT")) {
 			eenBoot = eenVloot.find(p -> p.isVrij(datumtijd, duur) && p.getType() == VoertuigType.ELEKTRISCHE_BOOT);
 			if (eenBoot != null && typeTocht.equals("MEER")) {
 				final Tocht eenTocht = eenBoot.reserveerMeerTocht(datumtijd, duur);
