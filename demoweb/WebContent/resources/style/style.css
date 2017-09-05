@@ -1,16 +1,12 @@
 body {
   font-family: Helvetica;
-  padding: 2em;
+  padding: 20%;
   background-color: whitesmoke;
 }
 
-h2 {
-  font-size: 2.5em;
-  padding-left: 15em;
-}
-h3{
-	font-size: 1.5em;
-	padding-left: 15em;
+h4{
+	font-size: 100%;
+text-align: center;
 }
 
 div#header{
@@ -18,50 +14,52 @@ position: fixed;
 top: 0;
 left: 0;
 width: 100%;
-height: 12.5em;
+height: 20%;
 background-color: #FFC0CB;
 z-index: 100;
 }
 div#login{
-	padding-top: 10;
+	padding-top: 5%;
 	flex-wrap: wrap;
-	padding-left: 80em; 
+	padding-left: 80%; 
 }
 
-.skillset {
-	padding-top: 13em;
+.knoppen {
+	padding-top: 15%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.skill-html {
+.huur {
   background-color: #FF7F7F;
 }
 
-.skill-js {
+.registreer {
   background-color: #FF7F7F;
 }
 
-.skill-jquery {
+.contact {
   background-color: #FF7F7F;
 }
 
-.skill-html,
-.skill-js,
-.skill-jquery {
-  width: 100%;
-  padding: 1em 3em 2em 2em;
-  margin: 0.5em;
+.huur,
+.registreer,
+.contact {
+	heigth: 10%;
+width: fixed;
+  padding: 10% 30% 20% 20%;
   color: whitesmoke;
+  text-align: center;
 }
 
 .projects-button {
-  padding: 2em 4em;
+  padding: 10% 30%;
   background-color: whitesmoke;
   opacity: 0.9;
-  width: 40%;
-  color: purple;
+  width: 50%;
+  color: black;
+  text-align: center;
 }
 
 ul {
@@ -70,7 +68,7 @@ ul {
 }
 
 .projects {
-  margin: 1em 0;
+  margin: 20% 0;
 }
 
 .active {
