@@ -4,23 +4,35 @@ body {
 	background-image: url('../images/boot.jpg');
 	background-size: 100%;
 	color:#FFFFFF;
-	font-size:20px;
-	padding-right: 20px;
+	padding-right: 0px;
+	font-size: 6vw;
+	width: 100vw;
 }
 
 form { 
 	color:#E4287C;
-	font-size:20px;
 	padding-right: 20px;
+}
+
+.login{
+	text-align: center;
+	margin: 0px auto;
 }
 
 input { 
 	color:#E4287C;
-	margin-right: 5px;
+	width:50vw;
+	height:20vw;
+	font-size: 6vw;
+	margin: 0px auto;	
 }
 
 span {
 	margin-right: 5px;
+}
+
+#greeting {
+	color:#E4287C;
 }
 
 H1 {
