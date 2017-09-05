@@ -61,6 +61,7 @@
 		 </form>
 		 
 		 <input type="submit" value="Registreren klant"/> <br>
+		 
 		 <a href ="reserveertocht.html"> <input   type="submit" value="Reserveren"/> </a><br/>
 		 
 		 <!-- Action verwijderd -->		
