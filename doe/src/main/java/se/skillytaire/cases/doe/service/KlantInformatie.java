@@ -17,19 +17,31 @@ public class KlantInformatie implements TransferableObject {
 		this.woonplaats = woonplaats;
 		this.telefoonnr = telefoonnr;
 	}
-
+	
+	public String getNaam() {
+		return naam;
+	}
 	public String geefNaam() {
 		return naam;
 	}
 
+	public String getAdres() {
+		return adres;
+	}
 	public String geefAdres() {
 		return adres;
 	}
 
+	public String getWoonplaats() {
+		return woonplaats;
+	}
 	public String geefWoonplaats() {
 		return woonplaats;
 	}
 
+	public String getTelefoonnr() {
+		return telefoonnr;
+	}
 	public String geefTelefoonnr() {
 		return telefoonnr;
 	}

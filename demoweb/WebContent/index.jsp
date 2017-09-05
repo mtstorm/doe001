@@ -60,11 +60,11 @@
 		 <input type="submit" value="Geef bootinformatie"/>
 		 </form>
 		 
-		 <input type="submit" value="Registreren klant"/> <br>
+		 <input type="button" value="Registreren klant" onclick = "location.href = 'klantregistreren.jsp'"/> <hr>
 		 <a href ="reserveertocht.html"> <input   type="submit" value="Reserveren"/> </a><br/>
 		 
 		 <!-- Action verwijderd -->		
-		 <form name="KlantInfoForm" method="get">
+		 <form name="KlantInfoForm" action="klantinformatie.html" method="get">
 		 <span> Klantnr </span> <input name="klantnr" type="text" /> <br>
 		 <input type="submit" value="Geef klantinformatie"/>
 		 </form>
