@@ -1,17 +1,13 @@
 function main() {
- $('.skillset').hide();
-  $('.skillset').fadeIn(1000);
-  $('#projects').hide();
-  $('.projects-button').on('click', function(){
+$('.skillset').hide();
+ $('.skillset').fadeIn(1000);
+ $('#projects').hide();
+ $('.projects-button').on('click', function(){
 
-  /*  $(this).next().slideToggle(400); */
+  $(this).next().slideToggle(400); 
 
-  $(this).toggleClass('active')
-    $(this).text('geklikt');
-	/*-->verwijzen naar volgende pagina*/
-                           });
-$('.login').on('click'){
-	
+ $(this).toggleClass('active')
+   $(this).text('geklikt');
+                          });
 }
-
 $(document).ready(main);
