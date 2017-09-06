@@ -14,6 +14,7 @@
 <body>
  <div id="header">
  <img src="./resources/images/hello-kitty.svg_.png " alt="kitty" width="150" align="left"> 
+ <br/>
   <h1> DOE <br>
   Reserveer Tocht </h1>
 
