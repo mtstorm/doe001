@@ -34,9 +34,21 @@
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style type="text/css">
+.ui-datepicker {
+   background: #FF7F7F;
+   border: 1px solid #555;
+   color: #FFC0CB;
+ }
+</style>
 <script>
+	var dateToday = new Date(); 
 	$(function() {
-		$("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' });
+		$("#datepicker").datepicker({ 
+			dateFormat: 'dd-mm-yy',
+			numberOfMonths: 1,
+	        showButtonPanel: true,
+	        minDate: dateToday});
 	});
 </script>
    
@@ -80,7 +92,7 @@
 		</select> <br /> <input type="submit" value="Reserveer Tocht" />
 	</form>
 	<br/>
-	<a href="index.jsp">Terug</a>
+	<a href="test2.html">Terug</a>
 
 
 </body>
