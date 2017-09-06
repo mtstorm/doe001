@@ -4,7 +4,6 @@ body {
   font-family: Helvetica;
   padding: 15px;
   background-color: whitesmoke;
-  display: flex;
 }
 
 h4{
@@ -66,9 +65,11 @@ background-color: #FFC0CB;
 z-index: 100;
  
 }
+
 span#hoofd{
 	
 }
+
 span#main{
 	position: fixed;
 	top: 80;
@@ -127,10 +128,10 @@ ul {
   list-style: none;
   padding: 0;
 }
-
+/* 
 .projects {
   margin: 30% ;
-}
+} */
 
 .active {
   background-color: #333333;
