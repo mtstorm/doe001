@@ -51,10 +51,6 @@ public class ReserveerTochtServlet extends HttpServlet implements Servlet {
 		String starttijdStringInUren = request.getParameter(PARAM_NAME_STARTTIJD);
 		String datumString = request.getParameter(PARAM_NAME_DATUM);
 
-		System.out.println("Er is een " + tochtTypeParamValue + "TOCHT gereserveerd met de bootsoort "
-				+ bootTypeParamValue + " om " + starttijdStringInUren + " op " + datumString + ", voor aantal uren: "
-				+ duurStringInUren);
-
 		int uren = Integer.parseInt(duurStringInUren);
 		Duration verwachteDuur = Duration.ofHours(uren);
 		String datumTijdString = new StringBuilder().append(datumString).append(" " + starttijdStringInUren).toString();

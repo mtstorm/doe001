@@ -225,7 +225,6 @@ public class VerhuurderServiceImpl implements VerhuurderService, Serializable {
 	public boolean reserveren(final String typeTocht, final String typeBoot, final LocalDateTime datumtijd,
 			final Duration duur) throws GeenBootVrijException {
 		
-		
 		Boot eenBoot = null;
 		if (typeBoot.equals("ROEI_BOOT")) {
 			eenBoot = eenVloot.find(p -> p.isVrij(datumtijd, duur) && p.getType() == VoertuigType.ROEI_BOOT);
@@ -264,5 +263,6 @@ public class VerhuurderServiceImpl implements VerhuurderService, Serializable {
 
 		return this.eenVloot.size();
 	}
+
 
 }
