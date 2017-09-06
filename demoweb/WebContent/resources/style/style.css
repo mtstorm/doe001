@@ -91,4 +91,13 @@ ul {
   background-color: #333333;
   color: whitesmoke;
 }
+<<<<<<< HEAD
 }
+=======
+
+.ui-datepicker {
+   background: #FF7F7F;
+   border: 1px solid #555;
+   color: #FFC0CB;
+ }
+>>>>>>> 03359d89dc5ef94cfa8658ab304cd95377137b05
