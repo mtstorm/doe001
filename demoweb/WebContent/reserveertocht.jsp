@@ -13,7 +13,7 @@
 </head>
 <body>
  <div id="header">
- <img src="./resources/images/hello-kitty.svg_.png " alt="kitty" width="50" align="left"> 
+ <img src="./resources/images/hello-kitty.svg_.png " alt="kitty" width="150" align="left"> 
   <h1> DOE <br>
   Reserveer Tocht </h1>
 
@@ -85,7 +85,7 @@
 			<option value="17:00"> 17.00 uur </option>
 
 
-		</select> <br /> 
+		</select> <br/> 
 		Duur <select name="duur" class="selectInvoer">
 			<option value="1">1</option>
 			<option value="2">2</option>
