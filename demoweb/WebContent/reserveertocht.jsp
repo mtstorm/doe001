@@ -9,11 +9,19 @@
 </head>
 
 <body>
-	<link href="./resources/style/style.css" rel="stylesheet"
-		type="text/css"></link>
+	<link href="./resources/style/style.css" rel="stylesheet" type="text/css"></link>
 </head>
 <body>
-	<h1>Reserveer Tocht</h1>
+ <div id="header">
+ <img src="./resources/images/hello-kitty.svg_.png " alt="kitty" width="50" align="left"> 
+  <h1> DOE <br>
+  Reserveer Tocht </h1>
+
+ </div>
+ 
+ <div>
+ <br/>
+<h1> </h1>
 	<form name="reserveertocht" action="reserveertocht.html" method="post">
 	
 	<c:choose>
@@ -23,8 +31,8 @@
    		</c:when>
    			</c:choose>
 
-
 		<html lang="en">
+		<div>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,11 +43,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style type="text/css">
-.ui-datepicker {
-   background: #FF7F7F;
-   border: 1px solid #555;
-   color: #FFC0CB;
- }
+
 </style>
 <script>
 	var dateToday = new Date(); 
@@ -53,21 +57,23 @@
 </script>
    
 </head>
+</div>
 <body>
 
 	<p>
 		Datum: <input type="text" id="datepicker" name="datum">
 	</p>
 
-
+</div>
 </body>
 		</html>
 
-		Boot type <select name="bootType">
+		Boot type <select name="bootType" class="selectInvoer">
 			<option value="ROEI_BOOT">Roeiboot</option>
 			<option value="ELEKTRISCHE_BOOT">Elektrisch</option>
 
-		</select> <br /> Begin tijd <select name="starttijd">
+		</select> <br /> 
+		Begin tijd <select name="starttijd" class="selectInvoer">
 			<option value="09:00"> 09.00 uur </option>
 			<option value="10:00"> 10.00 uur </option>
 			<option value="11:00"> 11.00 uur </option>
@@ -79,14 +85,16 @@
 			<option value="17:00"> 17.00 uur </option>
 
 
-		</select> <br /> Duur <select name="duur">
+		</select> <br /> 
+		Duur <select name="duur" class="selectInvoer">
 			<option value="1">1</option>
 			<option value="2">2</option>
 			<option value="4">4</option>
 			<option value="8">8</option>
 
 
-		</select> uren <br /> Tocht type <select name="tochtType">
+		</select> uren <br /> 
+		Tocht type <select name="tochtType" class="selectInvoer">
 			<option value="MEER">Meertocht</option>
 			<option value="RIVIER">Riviertocht</option>
 		</select> <br /> <input type="submit" value="Reserveer Tocht" />
