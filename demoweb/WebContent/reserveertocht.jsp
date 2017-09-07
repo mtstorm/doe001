@@ -9,31 +9,34 @@
 </head>
 
 <body>
-	<link href="./resources/style/style.css" rel="stylesheet" type="text/css"></link>
+	<link href="./resources/style/style.css" rel="stylesheet"
+		type="text/css"></link>
 </head>
 <body>
- <div id="header">
- <img src="./resources/images/hello-kitty.svg_.png "  class = "kitty"> 
- <br/>
- </div>
- 
- <div> <h1> DOE <br>
-  Reserveer Tocht </h1>
-  </div>
- 
- <div>
-	<form name="reserveertocht" action="reserveertocht.html" method="post">
-	
-	<c:choose>
-   		<c:when test="${not empty errorMsg}">
-   			<div class="error"> ${errorMsg} </div>
-   			<hr/>
-   		</c:when>
-   			</c:choose>
+	<div id="header">
+		<img src="./resources/images/hello-kitty.svg_.png " class="kitty">
+		<br />
+	</div>
 
-		<html lang="en">
-		<div>
-<head>
+	<div>
+		<h1>
+			DOE <br> Reserveer Tocht
+		</h1>
+	</div>
+
+	<div>
+		<form name="reserveertocht" action="reserveertocht.html" method="post">
+
+			<c:choose>
+				<c:when test="${not empty errorMsg}">
+					<div class="error">${errorMsg}</div>
+					<hr />
+				</c:when>
+			</c:choose>
+
+			<html lang="en">
+<div>
+	<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>jQuery UI Datepicker - Default functionality</title>
@@ -53,27 +56,26 @@
 	        minDate: dateToday});
 	});
 </script>
-   
-</head>
 
-<body>
+	</head>
 
-	<p>
-		Datum: <input type="text" id="datepicker" name="datum">
-	</p>
+	<body>
 
+		<div class="datepicker">
+			Datum: <br /> <input type="text" id="datepicker" name="datum">
+		</div>
 </div>
-
 </body>
-		</html>
-		<div class = "container">
+</html>
+<div class="container">
 	<form>
-		<label> Boot type </label> <select name="bootType" class="selectInvoer">
+		<label for="boottype"> Boot Type </label> <select name="bootType"
+			class="selectInvoer">
 			<option value="ROEI_BOOT">Roeiboot</option>
 			<option value="ELEKTRISCHE_BOOT">Elektrisch</option>
 
-		</select> <br /> 
-		Begin tijd <select name="starttijd" class="selectInvoer">
+		</select> <br /> <label for="Begintijd"> Begin tijd </label> <select
+			name="starttijd" class="selectInvoer">
 			<option value="09:00"> 09.00 uur </option>
 			<option value="10:00"> 10.00 uur </option>
 			<option value="11:00"> 11.00 uur </option>
@@ -85,24 +87,24 @@
 			<option value="17:00"> 17.00 uur </option>
 
 
-		</select> <br/> 
-		Duur in uren <select name="duur" class="selectInvoer">
+		</select> <br /> <label for="DuurUren"> Duur in Uren </label> <select
+			name="duur" class="selectInvoer">
 			<option value="1">1</option>
 			<option value="2">2</option>
 			<option value="4">4</option>
 			<option value="8">8</option>
 
 
-		</select> <br /> 
-		Tocht type <select name="tochtType" class="selectInvoer">
+		</select> <br /> <label for="TochtType"> Tocht Type </label> <select
+			name="tochtType" class="selectInvoer">
 			<option value="MEER">Meertocht</option>
 			<option value="RIVIER">Riviertocht</option>
-		</select> <br/> <br/> <input type="submit" value="Reserveer Tocht" />
-		
+		</select> <br /> <br /> <input type="submit" name='confirmation'
+			value="Reserveer Tocht" method="post" />
+
 	</form>
-	<br/> <br/>
-	<a href="test2.html">Terug</a>
-	</div>
+	<br /> <br /> <a href="test2.html">Terug</a>
+</div>
 
 </body>
 </html>

@@ -15,6 +15,8 @@ h1 {
 	color: #FF7F7F;
 	margin: 50px;
 	padding-top: 50px;
+	position:relative;
+	
 }
 
 .ui-widget {
@@ -56,11 +58,16 @@ input {
 	display: table-row;
 }
 
+.datepicker {
+	margin-left:10.4%;
+}
+
 .container {
 	position: absolute; 
 	width : 150px;
 	clear: both;
 	width: 150px;
+	margin-left: 10%;
 }
 
 .container select {
@@ -109,30 +116,26 @@ span#main {
 }
 
 .main {
-  display: flex;
+  display:block;
+  margin: auto;
   justify-content: space-between;
   flex-wrap: wrap;
+  
 }
-}
-
-.huur {
-	background-color: #FF7F7F;
-}
-
-.registreer {
-	background-color: #FF7F7F;
+.thekit{
+	display: table-cell;
+	width: 50%;
 }
 
-.contact {
-	background-color: #FF7F7F;
-}
-
-.huur, .registreer, .contact {
+p.huur, p.registreer, p.contact {
 	heigth: 100px;
 	width: 100px;
 	padding: 10px 30px 20px 20px;
 	color: whitesmoke;
 	text-align: middle;
+	background-color: #FF7F7F;
+	display:block;
+  margin: auto;
 }
 
 .projects-button {
