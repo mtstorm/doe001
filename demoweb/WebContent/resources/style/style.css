@@ -63,17 +63,12 @@ height: 80px;
 z-index: 100;
 }
 
-span#hoofd{
-	
-}
-
 span#main{
 	position: fixed;
 	top: 80;
 	left: 10;
 	justify-content: space-between;
 }
-
 
 .main {
   display: flex;
@@ -119,10 +114,10 @@ ul {
   list-style: none;
   padding: 0;
 }
-/* 
+
 .projects {
   margin: 30% ;
-} */
+} 
 
 .active {
   background-color: #333333;
