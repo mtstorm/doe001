@@ -65,7 +65,7 @@
 			Datum: <br /> <input type="text" id="datepicker" name="datum">
 		</div>
 </div>
-</body>
+
 </html>
 <div class="container">
 	<form>

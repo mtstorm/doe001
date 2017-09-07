@@ -16,7 +16,13 @@ h1 {
 	margin: 50px;
 	padding-top: 50px;
 	position:relative;
-	
+}
+
+hr.style12 {
+	height: 6px;
+	background: url(http://ibrahimjabbari.com/english/images/hr-12.png) repeat-x 0 0;
+    border: 0;
+    color: red;
 }
 
 .ui-widget {
@@ -32,6 +38,7 @@ h1 {
 .ui-datepicker {
 	color: #ff8080 !important;
 	background-color: #FFC0CB !important;
+	z-index: 100 !important;
 }
 
 .ui-widget-header {
@@ -56,6 +63,8 @@ h1 {
 
 input {
 	display: table-row;
+	padding: 1px 0px;
+		width : 150px; 
 }
 
 .datepicker {
@@ -66,7 +75,6 @@ input {
 	position: absolute; 
 	width : 150px;
 	clear: both;
-	width: 150px;
 	margin-left: 10%;
 }
 
@@ -130,12 +138,13 @@ span#main {
 p.huur, p.registreer, p.contact {
 	heigth: 100px;
 	width: 100px;
-	padding: 10px 30px 20px 20px;
+	padding: 20px 20px 20px 20px;;
 	color: whitesmoke;
 	text-align: middle;
 	background-color: #FF7F7F;
 	display:block;
-  margin: auto;
+	  margin: auto;
+  
 }
 
 .projects-button {
@@ -158,5 +167,16 @@ ul {
 } 
 
 .active {
+}`
+
+#footer{
+	color: blue;
+	background-color: #FFC0CB;
+	font-size: 20px;
+	text-align: center;
+}
+
+img {
+	opacity: 50%;
 }
 
