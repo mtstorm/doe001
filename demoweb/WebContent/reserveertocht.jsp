@@ -13,16 +13,15 @@
 </head>
 <body>
  <div id="header">
- <img src="./resources/images/hello-kitty.svg_.png " alt="kitty" width="150" align="left"> 
+ <img src="./resources/images/hello-kitty.svg_.png "  class = "kitty"> 
  <br/>
-  <h1> DOE <br>
-  Reserveer Tocht </h1>
-
  </div>
  
+ <div> <h1> DOE <br>
+  Reserveer Tocht </h1>
+  </div>
+ 
  <div>
- <br/>
-<h1> </h1>
 	<form name="reserveertocht" action="reserveertocht.html" method="post">
 	
 	<c:choose>
@@ -43,9 +42,7 @@
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<style type="text/css">
 
-</style>
 <script>
 	var dateToday = new Date(); 
 	$(function() {
@@ -58,7 +55,7 @@
 </script>
    
 </head>
-</div>
+
 <body>
 
 	<p>
@@ -66,10 +63,12 @@
 	</p>
 
 </div>
+
 </body>
 		</html>
-
-		Boot type <select name="bootType" class="selectInvoer">
+		<div class = "container">
+	<form>
+		<label> Boot type </label> <select name="bootType" class="selectInvoer">
 			<option value="ROEI_BOOT">Roeiboot</option>
 			<option value="ELEKTRISCHE_BOOT">Elektrisch</option>
 
@@ -87,22 +86,23 @@
 
 
 		</select> <br/> 
-		Duur <select name="duur" class="selectInvoer">
+		Duur in uren <select name="duur" class="selectInvoer">
 			<option value="1">1</option>
 			<option value="2">2</option>
 			<option value="4">4</option>
 			<option value="8">8</option>
 
 
-		</select> uren <br /> 
+		</select> <br /> 
 		Tocht type <select name="tochtType" class="selectInvoer">
 			<option value="MEER">Meertocht</option>
 			<option value="RIVIER">Riviertocht</option>
-		</select> <br /> <input type="submit" value="Reserveer Tocht" />
+		</select> <br/> <br/> <input type="submit" value="Reserveer Tocht" />
+		
 	</form>
-	<br/>
+	<br/> <br/>
 	<a href="test2.html">Terug</a>
-
+	</div>
 
 </body>
 </html>
