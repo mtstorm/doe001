@@ -4,10 +4,9 @@ body {
 	background-color: whitesmoke;
 }
 
-h4 {
-	font-size: 20px;
-	text-align: center;
-	width: 100%;
+p{
+font-size: 20px;
+text-align: center;
 }
 
 h1 {
@@ -109,18 +108,11 @@ span#main {
 	justify-content: space-between;
 }
 
-.login {
-	padding-top: 1%;
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
+.main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
-
-.knoppen {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	text-align: middle;
 }
 
 .huur {
@@ -159,10 +151,9 @@ ul {
 }
 
 .projects {
-	margin: 30%;
-}
+  margin: 30% ;
+} 
 
 .active {
-	background-color: #333333;
-	color: whitesmoke;
 }
+
