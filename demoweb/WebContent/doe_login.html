@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link href="./resources/style/bootjes.css" rel="stylesheet" type="text/css"></link>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
+            data-dojo-config="async: true"></script>
+
+</head>
+
+<body>
+  
+  <div id="greeting">HOI</div>
+  <script>
+        require([
+        	
+            'dojo/dom',
+            'dojo/fx',           
+            'dojo/domReady!'
+        ],  function (dom, fx) {
+            // The piece we had before...
+            var greeting = dom.byId('greeting');
+            greeting.innerHTML += '';
+
+            // ...but now, with an animation!
+            fx.slideTo({
+                node: greeting,
+                top: 250,
+                left: 5
+            }).play();
+        
+        }
+        
+        );
+    </script>
+
+	<form name="login" action="login.html" method="post">  
+	<div class="login">
+	Naam:<br/><input type="text" name="username"/><br/>
+	Wachtwoord:<br/><input type="password" name="userpass"/><br/><br/>
+	<input type="submit" value="Gaan"/> <br/><br/>
+	<a href="./index.jsp"><img width="100vw" alt="arrow" src="./resources/images/61022.png"></img></a>
+	
+	</div> 
+	</form>   
+
+</body>
+</html>

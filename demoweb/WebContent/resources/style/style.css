@@ -1,0 +1,182 @@
+body {
+	font-family: Helvetica;
+	padding: 15px;
+	background-color: whitesmoke;
+}
+
+p{
+font-size: 20px;
+text-align: center;
+}
+
+h1 {
+	font-size: 30px;
+	text-align: center;
+	color: #FF7F7F;
+	margin: 50px;
+	padding-top: 50px;
+	position:relative;
+}
+
+hr.style12 {
+	height: 6px;
+	background: url(http://ibrahimjabbari.com/english/images/hr-12.png) repeat-x 0 0;
+    border: 0;
+    color: red;
+}
+
+.ui-widget {
+	background: #FFC0CB;
+	background-color: #ff8080;
+}
+
+.ui-widget-content {
+	background: #FFC0CB;
+	color: #8000ff;
+}
+
+.ui-datepicker {
+	color: #ff8080 !important;
+	background-color: #FFC0CB !important;
+	z-index: 100 !important;
+}
+
+.ui-widget-header {
+	border: 1px solid #dddddd !important;
+	background: #ff8080 !important;
+	color: #333333 !important;
+	font-weight: bold !important;
+}
+
+.ui-datepicker-calendar {
+	border: 1px solid #555;
+	color: #ff8080;
+	background-color: #FFC0CB;
+}
+
+.selectInvoer {
+	font-size: 15px;
+	text-align: center;
+	color: #FF7F7F;
+	white-space: nowrap;
+}
+
+input {
+	display: table-row;
+	padding: 1px 0px;
+		width : 150px; 
+}
+
+.datepicker {
+	margin-left:10.4%;
+}
+
+.container {
+	position: absolute; 
+	width : 150px;
+	clear: both;
+	margin-left: 10%;
+}
+
+.container select {
+	width: 100%;
+	clear: both;
+}
+
+div#header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 80px;
+	background-color: #FFC0CB;
+	z-index: 100;
+}
+
+.kitty{
+	animation-name: kittywalk;
+	animation-iteration-count: infinite;
+	animation-delay: 2s;
+    animation-duration: 4s;
+	display: block;
+	margin: auto;
+	width: 10%;
+}
+
+@keyframes kittywalk {
+0% {transform: rotate(0deg);left:0px;}
+25% {transform: rotate(20deg);left:0px;}
+50% {transform: rotate(0deg);left:500px;}
+55% {transform: rotate(0deg);left:500px;}
+70% {transform: rotate(0deg);left:500px;}
+100% {transform: rotate(-360deg);left:0px;}
+}
+
+span#hoofd {
+	
+}
+
+span#main {
+	position: fixed;
+	top: 80;
+	left: 10;
+	justify-content: space-between;
+}
+
+.main {
+  display:block;
+  margin: auto;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  
+}
+.thekit{
+	display: table-cell;
+	width: 50%;
+}
+
+p.huur, p.registreer, p.contact {
+	heigth: 100px;
+	width: 100px;
+	padding: 20px 20px 20px 20px;;
+	color: whitesmoke;
+	text-align: middle;
+	background-color: #FF7F7F;
+	display:block;
+	  margin: auto;
+  
+}
+
+.projects-button {
+	padding: 10% 30%;
+	background-color: whitesmoke;
+	opacity: 0.9;
+	width: 50px;
+	heigth: 50px;
+	color: black;
+	text-align: center;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+.projects {
+  margin: 30% ;
+} 
+
+.active {
+}`
+
+#footer{
+	color: blue;
+	background-color: #FFC0CB;
+	font-size: 20px;
+	text-align: center;
+}
+
+img {
+	opacity: 50%;
+}
+

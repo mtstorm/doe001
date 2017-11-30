@@ -1,26 +1,41 @@
 @charset "ISO-8859-1";
 
+@media 	only screen and (max-width: 1023px)
+{
+	
 body {	
 	background-image: url('../images/boot.jpg');
 	background-size: 100%;
 	color:#FFFFFF;
-	font-size:20px;
-	padding-right: 20px;
+	padding-right: 0px;
+	font-size: 6vw;
+	width: 100vw;
 }
 
 form { 
 	color:#E4287C;
-	font-size:20px;
 	padding-right: 20px;
+}
+
+.login{
+	text-align: center;
+	margin: 0px auto;
 }
 
 input { 
 	color:#E4287C;
-	margin-right: 5px;
+	width:50vw;
+	height:20vw;
+	font-size: 6vw;
+	margin: 0px auto;	
 }
 
 span {
 	margin-right: 5px;
+}
+
+#greeting {
+	color:#E4287C;
 }
 
 H1 {
@@ -57,3 +72,72 @@ tr {
 	background-color: red;
 }
 
+}
+
+
+@media 	only screen and (min-width: 1024px)
+{
+	
+body {	
+	background-image: url('../images/boot.jpg');
+	background-size: 100%;
+	color:#FFFFFF;
+	padding-right: 0px;
+	font-size: 20px;
+}
+
+form { 
+	color:#E4287C;
+	padding-right: 20px;
+}
+
+
+
+input { 
+	color:#E4287C;
+	font-size: 20px;	
+}
+
+span {
+	margin-right: 20px;
+}
+
+#greeting {
+	color:#E4287C;
+}
+
+H1 {
+	color:#E4287C;
+}
+
+p {
+	color:green;
+}
+
+table {
+width:100%;
+color:#E4287C;
+background: rgba(25, 80, 176, 0.3)	
+	
+}
+
+a {
+	color:#FFFFFF;
+	font-size:20px;
+}
+
+tr {
+	color:#E4287C;
+	background-color: none;
+}
+.selected {
+	color:white;
+	background-color: red;
+}
+
+.error {
+	color:white;
+	background-color: red;
+}
+
+}

@@ -219,30 +219,33 @@ public class VerhuurderServiceImpl implements VerhuurderService, Serializable {
 
 		return vrijebotentransfer;
 	}
-
+	//FIXME Boottype en tochttype vergelijken met enums ipv Strings. 
+	//FIXME controleren of een boot al gereserveerd is
 	@Override
 	public boolean reserveren(final String typeTocht, final String typeBoot, final LocalDateTime datumtijd,
 			final Duration duur) throws GeenBootVrijException {
+		
 		Boot eenBoot = null;
-		if (typeBoot.equals("RoeiBoot")) {
-			eenBoot = eenVloot.geefVrijeRoeiBoot(datumtijd, duur);
-			if (eenBoot != null && typeTocht.equals("MeerTocht")) {
+		if (typeBoot.equals("ROEI_BOOT")) {
+			eenBoot = eenVloot.find(p -> p.isVrij(datumtijd, duur) && p.getType() == VoertuigType.ROEI_BOOT);
+			if (eenBoot != null && typeTocht.equals("MEER")) {
 				final Tocht eenTocht = eenBoot.reserveerMeerTocht(datumtijd, duur);
 				return eenTocht != null;
-			} else if (eenBoot != null && typeTocht.equals("RivierTocht")) {
+			} else if (eenBoot != null && typeTocht.equals("RIVIER")) {
 				final Tocht eenTocht = eenBoot.reserveerRivierTocht(datumtijd, duur);
 				return eenTocht != null;
 			}
-		} else if (typeBoot.equals("Elektrisch")) {
-			eenBoot = eenVloot.geefVrijeElektrischeBoot(datumtijd, duur);
-			if (eenBoot != null && typeTocht.equals("MeerTocht")) {
+		} else if (typeBoot.equals("ELEKTRISCHE_BOOT")) {
+			eenBoot = eenVloot.find(p -> p.isVrij(datumtijd, duur) && p.getType() == VoertuigType.ELEKTRISCHE_BOOT);
+			if (eenBoot != null && typeTocht.equals("MEER")) {
 				final Tocht eenTocht = eenBoot.reserveerMeerTocht(datumtijd, duur);
 				return eenTocht != null;
-			} else if (eenBoot != null && typeTocht.equals("RivierTocht")) {
+			} else if (eenBoot != null && typeTocht.equals("RIVIER")) {
 				final Tocht eenTocht = eenBoot.reserveerRivierTocht(datumtijd, duur);
 				return eenTocht != null;
 			}
 		}
+		persist();
 		return eenBoot != null;
 	}
 
@@ -260,5 +263,6 @@ public class VerhuurderServiceImpl implements VerhuurderService, Serializable {
 
 		return this.eenVloot.size();
 	}
+
 
 }

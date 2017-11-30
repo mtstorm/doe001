@@ -6,7 +6,7 @@
    <head>
     <meta charset="ISO-8859-1">
     <title>Dana Outdoor Adventures and Experiences</title>
-    <link href="./resources/style/bootjes.css" rel="stylesheet" type="text/css"></link>
+    <link href="./resources/style/style.css" rel="stylesheet" type="text/css"></link>
     <script src="./resources/javascript/miauw.js"></script>
 
     
@@ -61,6 +61,7 @@
 		 </form>
 		 
 		 <input type="submit" value="Registreren klant"/> <br>
+		 
 		 <a href ="reserveertocht.html"> <input   type="submit" value="Reserveren"/> </a><br/>
 		 
 		 <!-- Action verwijderd -->		
