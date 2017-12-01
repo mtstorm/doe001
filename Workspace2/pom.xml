@@ -18,6 +18,7 @@
 
   <modules>
 	<module>demoweb</module>
+	<module>doe</module>
   </modules>
 
   <distributionManagement>
