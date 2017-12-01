@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>se.skillytaire.cases</groupId>
-    <artifactId>doe</artifactId>
+    <artifactId>demoweb</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
