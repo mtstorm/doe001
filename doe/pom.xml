@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 	
   <parent>
-    <groupId>se.skillytaire.se</groupId>
+    <groupId>se.skillytaire.cases</groupId>
     <artifactId>doe001</artifactId>
     <version>1</version>
     <relativePath>../pom.xml</relativePath>
