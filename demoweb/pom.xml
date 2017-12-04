@@ -4,15 +4,15 @@
 
 <parent>
     	<groupId>se.skillytaire.cases</groupId>
-    	<artifactId>demoweb</artifactId>
+    	<artifactId>doe001</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<packaging>war</packaging>
 	<relativePath>../pom.xml</relativePath>
 </parent>
 	
-    <name>DOE</name>
-    <url>http://maven.apache.org</url>
-
+  <artifactId>demoweb</artifactId>
+  <packaging>war</packaging>
+  <name>DOE</name>
+  <description>Demoweb.</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
