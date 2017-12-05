@@ -11,7 +11,7 @@
 	
   <artifactId>demoweb</artifactId>
   <packaging>war</packaging>
-  <name>DOE</name>
+  <name>Demoweb</name>
   <description>Demoweb.</description>
 
     <properties>
