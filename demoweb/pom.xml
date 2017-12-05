@@ -20,7 +20,9 @@
         <maven.compiler.source>1.8</maven.compiler.source>
     </properties>
 
-
+<modules>
+	<module>WebContent</module>
+</modules>
 
     <dependencies>
 		<dependency>
