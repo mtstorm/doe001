@@ -196,6 +196,13 @@
 				</configuration>
 			</plugin>
 		</plugins>
+<resources>
+      <resource>
+        <targetPath>WebContent/resources</targetPath>
+        <filtering>false</filtering>
+        <directory>${basedir}/WebContent/resources</directory>
+	</resource>
+</resources>
 	</build>
 
 
