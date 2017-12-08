@@ -10,6 +10,7 @@
 	<classpathentry kind="var" path="M2_REPO2/org/hsqldb/hsqldb/2.4.0/hsqldb-2.4.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO2/org/postgresql/postgresql/42.1.4/postgresql-42.1.4.jar"/>
 	<classpathentry kind="var" path="M2_REPO2/org/eclipse/persistence/javax.persistence/2.2.0/javax.persistence-2.2.0.jar"/>
+	<classpathentry kind="var" path="http://repo1.maven.org/maven2/javax/servlet/jstl/1.2/jstl-1.2.jar/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
